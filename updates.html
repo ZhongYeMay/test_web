@@ -39,6 +39,26 @@
 
     <article class="entry">
       <div class="entry-head">
+        <span class="time">2026-08-11 05:02:55 UTC+8</span>
+        <span class="badge">UPDATE #015</span>
+      </div>
+      <h2>为 RUN TEST 增加安全上下文诊断</h2>
+      <p>使用浏览器原生 <code>window.isSecureContext</code> 在诊断终端中显示当前页面是否运行在安全上下文中，帮助判断 Clipboard 等受安全环境限制的 Web API 是否具备基础运行条件。</p>
+      <ul>
+        <li>RUN TEST 新增 <code>Secure context: YES/NO</code> 诊断行。</li>
+        <li>仅进行原生布尔能力检测，不请求权限、不上传数据，也不增加第三方依赖。</li>
+        <li>访问计数、国家统计、世界地图、网络状态、Navigation Timing、复制日志与后台时钟逻辑保持不变。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-050255.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/91345311baf2d5bf3b24b8de4d169701de81114b"><code>91345311baf2</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/95485389ad03d1ec1a53531ffe5f48eafe9421c3"><code>95485389ad03</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-050255.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
         <span class="time">2026-08-11 04:03:20 UTC+8</span>
         <span class="badge">UPDATE #014</span>
       </div>
