@@ -39,6 +39,27 @@
 
     <article class="entry">
       <div class="entry-head">
+        <span class="time">2026-08-11 04:03:20 UTC+8</span>
+        <span class="badge">UPDATE #014</span>
+      </div>
+      <h2>提前建立 Google Charts 关键连接</h2>
+      <p>为页面在 head 中立即使用的 Google Charts loader 来源加入原生 <code>rel="preconnect"</code> 资源提示，让支持该提示的浏览器可以更早完成到 gstatic 的 DNS、TCP 与 TLS 连接准备，减少首次请求第三方地图脚本时的连接等待。</p>
+      <ul>
+        <li>仅对页面首屏就确定需要的 <code>https://www.gstatic.com</code> 使用 preconnect，没有对所有第三方接口过度预连接。</li>
+        <li>不改变 Google Charts 加载方式、访问计数、国家统计、世界地图数据逻辑或隐私策略。</li>
+        <li>不增加 JavaScript、付费依赖或新的外部脚本。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续同步使用同一份页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-040320.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/c36b6dfda402f786aef80370a9be5e1816516e74"><code>c36b6dfda402</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/e4378dc3691de6ab005507f0f8f80bec0de61f3c"><code>e4378dc3691d</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-040320.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
         <span class="time">2026-08-11 03:08:50 UTC+8</span>
         <span class="badge">UPDATE #013</span>
       </div>
