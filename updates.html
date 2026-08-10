@@ -39,6 +39,26 @@
 
     <article class="entry">
       <div class="entry-head">
+        <span class="time">2026-08-10 23:04:40 UTC+8</span>
+        <span class="badge">UPDATE #009</span>
+      </div>
+      <h2>减少屏外世界地图的初始渲染开销</h2>
+      <p>为页面下方的世界访客地图区域加入 CSS content-visibility 与预估占位尺寸，让支持该特性的浏览器在地图仍位于视口外时可以跳过其布局和绘制，并在接近视口时正常渲染。</p>
+      <ul>
+        <li>地图区域使用 <code>content-visibility:auto</code> 延后屏外渲染工作。</li>
+        <li>使用 <code>contain-intrinsic-size:720px</code> 保留稳定的预估空间，降低进入视口时的布局跳动风险。</li>
+        <li>访问计数、国家统计、地图数据请求、网络诊断、后台时钟和键盘功能保持不变。</li>
+        <li>index.html 与 test.html 同步使用本轮版本，根首页继续保持一致。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260810-230440.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/e7960a1be9ffa3c322dff38ea17d3d2b9f6ef17b"><code>e7960a1be9ff</code></a></div>
+      </div>
+      <a class="download" href="test+20260810-230440.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
         <span class="time">2026-08-10 22:05:20 UTC+8</span>
         <span class="badge">UPDATE #008</span>
       </div>
@@ -113,7 +133,7 @@
       </ul>
       <div class="meta">
         <div>Archived file: <code>test+20260810-190401.html</code></div>
-        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/f485107135b9c6dc5b791fc5fd82990ce4964074"><code>f485107135b9</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/f485107135b9c6dc5b791fc5fd82990ce4964074"><code>f485107135b9c</code></a></div>
       </div>
       <a class="download" href="test+20260810-190401.html" download>DOWNLOAD PREVIOUS HTML</a>
     </article>
