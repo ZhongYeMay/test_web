@@ -39,6 +39,28 @@
 
     <article class="entry">
       <div class="entry-head">
+        <span class="time">2026-08-11 00:59:41 UTC+8</span>
+        <span class="badge">UPDATE #011</span>
+      </div>
+      <h2>为 RUN TEST 增加 Navigation Timing 诊断</h2>
+      <p>使用浏览器原生 PerformanceNavigationTiming，在诊断终端中显示当前页面的导航类型以及本次文档导航耗时，帮助区分普通打开、刷新和前进/后退恢复等情况。</p>
+      <ul>
+        <li>RUN TEST 新增 Navigation 诊断行，例如 <code>navigate · 123 ms</code>、<code>reload · 95 ms</code> 或 <code>back_forward · 41 ms</code>。</li>
+        <li>浏览器不支持 Navigation Timing Level 2 时安全显示 <code>unsupported</code>，不会影响其他测试。</li>
+        <li>不新增外部依赖，也不修改访问计数、世界地图、国家统计、网络状态或隐私说明。</li>
+        <li>index.html 与 test.html 继续同步使用同一份页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-005941.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/ee3f346671942ca6c00e0e33b3e2c5a1ccf4aedf"><code>ee3f34667194</code></a></div>
+        <div>Cleanup commit: <a href="https://github.com/ZhongYeMay/test_web/commit/4b2bdff0b6744c094b5fed6df4fff86ace94d652"><code>4b2bdff0b674</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/00e10dfc22565bad6796d6d35886d03a8fc41eeb"><code>00e10dfc2256</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-005941.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
         <span class="time">2026-08-10 23:58:07 UTC+8</span>
         <span class="badge">UPDATE #010</span>
       </div>
