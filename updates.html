@@ -39,6 +39,27 @@
 
     <article class="entry">
       <div class="entry-head">
+        <span class="time">2026-08-10 18:43:00 UTC+8</span>
+        <span class="badge">UPDATE #004</span>
+      </div>
+      <h2>修复 Total visits 显示不可用</h2>
+      <p>原来的 Total visits 完全依赖浏览器跨域 fetch CounterAPI；请求被网络、限流或跨域策略阻断时会直接显示 N/A。本次把总访问显示切换为 hits.sh 图片式计数器，使总访问数与地图使用的 CounterAPI 解耦。</p>
+      <ul>
+        <li>Total visits 不再依赖跨域 JSON fetch 才能显示。</li>
+        <li>图片加载本身完成计数并显示累计访问量。</li>
+        <li>点击访问数字可打开对应的 hits.sh 统计页面。</li>
+        <li>地图统计故障或 CounterAPI 限流不再影响 Total visits。</li>
+        <li>保留地图现有国家级隐私保护设计。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260810-184300.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/ac26dc2ee6b046a459567235dc23a37bb092c51a"><code>ac26dc2ee6b0</code></a></div>
+      </div>
+      <a class="download" href="test+20260810-184300.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
         <span class="time">2026-08-10 18:35:00 UTC+8</span>
         <span class="badge">UPDATE #003</span>
       </div>
