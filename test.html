@@ -198,7 +198,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 14px;
       margin-top: 14px;
     }
@@ -257,6 +257,10 @@
 
       .cursor { animation: none; }
       .primary:hover { transform: none; }
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 720px) {
@@ -322,6 +326,12 @@
           <div class="metric" id="runs">0</div>
           <p>记录当前页面会话运行测试的次数。</p>
         </article>
+
+        <article class="card">
+          <div class="card-label">Total visits</div>
+          <div class="metric" id="visits" aria-live="polite">...</div>
+          <p>记录 test.html 自启用统计后的累计页面访问次数。</p>
+        </article>
       </section>
     </main>
 
@@ -337,7 +347,9 @@
     const terminal = document.getElementById('terminal');
     const runButton = document.getElementById('runTest');
     const runCounter = document.getElementById('runs');
+    const visitCounter = document.getElementById('visits');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const counterEndpoint = 'https://api.counterapi.dev/v1/zhongyemay-test-web/total-visits/up';
     let runs = 0;
 
     function updateClock() {
@@ -356,6 +368,21 @@
       terminal.scrollTop = terminal.scrollHeight;
     }
 
+    async function registerVisit() {
+      try {
+        const response = await fetch(counterEndpoint, { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        const count = Number(data.count ?? data.value);
+        if (!Number.isFinite(count)) throw new Error('Invalid counter response');
+        visitCounter.textContent = new Intl.NumberFormat('zh-CN').format(count);
+      } catch (error) {
+        visitCounter.textContent = 'N/A';
+        visitCounter.title = '访问计数服务暂时不可用';
+        console.warn('Visit counter unavailable:', error);
+      }
+    }
+
     runButton.addEventListener('click', () => {
       runs += 1;
       runCounter.textContent = runs;
@@ -370,6 +397,7 @@
 
     updateClock();
     updateViewport();
+    registerVisit();
     setInterval(updateClock, 1000);
     window.addEventListener('resize', updateViewport);
   </script>
