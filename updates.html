@@ -39,6 +39,27 @@
 
     <article class="entry">
       <div class="entry-head">
+        <span class="time">2026-08-11 03:08:50 UTC+8</span>
+        <span class="badge">UPDATE #013</span>
+      </div>
+      <h2>为诊断终端增加一键复制日志</h2>
+      <p>在 diagnostics.log 标题栏加入 COPY LOG 按钮，可把当前终端中的诊断结果以纯文本复制到系统剪贴板，方便分享和排查问题。</p>
+      <ul>
+        <li>使用浏览器原生 Clipboard API 的 <code>navigator.clipboard.writeText()</code>，不增加第三方依赖。</li>
+        <li>复制成功时短暂显示 <code>COPIED ✓</code>；权限或浏览器能力不可用时显示 <code>COPY FAILED</code>，不会影响 RUN TEST。</li>
+        <li>保留访问计数、世界地图、国家统计、网络状态、Navigation Timing、高对比度和后台时钟逻辑。</li>
+        <li>index.html 与 test.html 继续同步使用同一份页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-030850.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/099fed6c6338b7d7b192f2c79a6bd5f979cc589e"><code>099fed6c6338</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/0f9c3fc02b0c1721a3f5505f65b534050cb6f265"><code>0f9c3fc02b0c</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-030850.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
         <span class="time">2026-08-11 01:58:35 UTC+8</span>
         <span class="badge">UPDATE #012</span>
       </div>
