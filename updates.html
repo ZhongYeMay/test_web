@@ -39,6 +39,49 @@
 
     <article class="entry">
       <div class="entry-head">
+        <span class="time">2026-08-11 07:04:32 UTC+8</span>
+        <span class="badge">UPDATE #017</span>
+      </div>
+      <h2>声明页面使用深色浏览器 UI 配色</h2>
+      <p>为固定深色主题加入标准 <code>&lt;meta name="color-scheme" content="dark"&gt;</code> 声明，让支持该标准的浏览器把滚动条、原生表单控件及其他浏览器提供的 UI 与页面深色外观协调显示。</p>
+      <ul>
+        <li>只增加一个标准 HTML 元数据声明，不增加 JavaScript、外部脚本或依赖。</li>
+        <li>现有主题颜色、访问计数、世界地图、国家统计、网络状态和诊断逻辑保持不变。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续同步使用完全相同的页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-070432.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/13a3f263190218e74094bf49dd4da8892636a942"><code>13a3f2631902</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/dc22cc3cbbac1b508edf99824e0d5ba4638b5062"><code>dc22cc3cbbac</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/c3223dc3fee5d102c8c367be897c69c133095111"><code>c3223dc3fee5</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-070432.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-11 06:00:33 UTC+8</span>
+        <span class="badge">UPDATE #016</span>
+      </div>
+      <h2>向辅助技术公开世界地图加载状态</h2>
+      <p>为 WORLD VISITOR MAP 区域加入 <code>aria-busy</code> 状态。地图和国家统计加载期间标记为忙碌，加载流程无论成功或失败结束后都会恢复为非忙碌状态。</p>
+      <ul>
+        <li>地图区域初始设置 <code>aria-busy="true"</code>。</li>
+        <li>地图统计加载流程在 <code>finally</code> 中统一恢复为 <code>false</code>。</li>
+        <li>不改变访问计数、国家统计来源、地图绘制方式、隐私策略或其他诊断功能。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 同步使用本轮版本。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-060033.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/888fdd7193d1fae5301a518c7321beffd101b895"><code>888fdd7193d1</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/b81496b2c9a3ea49917c84d491e09fe6c06e0c54"><code>b81496b2c9a3</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/99d50b9c5b39288edb6769138aee82b9ee9c0175"><code>99d50b9c5b39</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-060033.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
         <span class="time">2026-08-11 05:02:55 UTC+8</span>
         <span class="badge">UPDATE #015</span>
       </div>
