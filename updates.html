@@ -39,6 +39,27 @@
 
     <article class="entry">
       <div class="entry-head">
+        <span class="time">2026-08-10 21:02:08 UTC+8</span>
+        <span class="badge">UPDATE #007</span>
+      </div>
+      <h2>新增实时网络连接状态诊断</h2>
+      <p>根据浏览器的 Navigator.onLine 状态和 online/offline 事件，在页首新增动态网络连接提示，并把当前网络提示加入 RUN TEST 诊断输出。该状态仅作为浏览器连接提示，不会据此禁用页面功能。</p>
+      <ul>
+        <li>页首同时保留部署状态，并新增 NETWORK ONLINE / NETWORK OFFLINE 状态。</li>
+        <li>网络状态变化时无需刷新页面即可自动更新提示。</li>
+        <li>离线状态使用不同指示颜色，并通过 aria-live 向辅助技术报告变化。</li>
+        <li>RUN TEST 新增 Network hint 诊断项。</li>
+        <li>不修改访问计数、国家统计、世界地图、跳转链接或后台时钟逻辑。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260810-210208.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/4db994cd1eca12b35f0f309f690f5fed4e06bd08"><code>4db994cd1eca</code></a></div>
+      </div>
+      <a class="download" href="test+20260810-210208.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
         <span class="time">2026-08-10 20:06:40 UTC+8</span>
         <span class="badge">UPDATE #006</span>
       </div>
