@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#05070d" />
+  <meta name="description" content="GitHub Pages diagnostics and browser capability test page." />
+  <title>TEST LAB</title>
+  <style>
+    :root {
+      --bg: #05070d;
+      --panel: rgba(255,255,255,.055);
+      --line: rgba(255,255,255,.11);
+      --text: #f5f7fb;
+      --muted: #8d96a8;
+      --accent: #7c9cff;
+      --ok: #67e8a5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 15%, rgba(74,102,255,.18), transparent 32%),
+        radial-gradient(circle at 80% 80%, rgba(167,81,255,.12), transparent 30%),
+        var(--bg);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
+
+    .shell {
+      width: min(1060px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 60px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .logo {
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: .16em;
+    }
+
+    .online {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .online::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 14px rgba(103,232,165,.9);
+    }
+
+    .hero {
+      padding: 74px 0 56px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 13px;
+      letter-spacing: .14em;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      font-size: clamp(3.4rem, 11vw, 8rem);
+      line-height: .88;
+      letter-spacing: -.07em;
+      max-width: 900px;
+    }
+
+    h1 span {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,.35);
+    }
+
+    .lead {
+      max-width: 660px;
+      margin: 30px 0 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-family: system-ui, sans-serif;
+      font-size: 15px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    button, .link-btn {
+      appearance: none;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 12px 16px;
+      font: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      transition: .18s ease;
+      text-decoration: none;
+    }
+
+    button:focus-visible, .link-btn:focus-visible, footer a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .primary {
+      background: var(--text);
+      color: #080b11;
+      border-color: var(--text);
+      font-weight: 800;
+    }
+
+    .primary:hover { transform: translateY(-2px); }
+
+    .secondary {
+      color: var(--text);
+      background: var(--panel);
+    }
+
+    .secondary:hover { background: rgba(255,255,255,.09); }
+
+    .terminal {
+      margin-top: 36px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(5,8,15,.82);
+      box-shadow: 0 30px 100px rgba(0,0,0,.32);
+    }
+
+    .terminal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .dots { display: flex; gap: 7px; }
+    .dots i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.25); }
+
+    .terminal-body {
+      padding: 22px;
+      min-height: 260px;
+      font-size: 13px;
+      line-height: 1.8;
+      color: #bac3d4;
+    }
+
+    .prompt { color: var(--accent); }
+    .success { color: var(--ok); }
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.05em;
+      margin-left: 3px;
+      background: var(--text);
+      vertical-align: -2px;
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px;
+      background: var(--panel);
+      min-height: 152px;
+    }
+
+    .card-label {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .metric {
+      margin-top: 18px;
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+
+    .card p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-family: system-ui, sans-serif;
+      line-height: 1.55;
+      font-size: 13px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 52px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: #687186;
+      font-size: 12px;
+    }
+
+    footer a { color: inherit; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+
+      .cursor { animation: none; }
+      .primary:hover { transform: none; }
+    }
+
+    @media (max-width: 720px) {
+      .hero { padding-top: 48px; }
+      .grid { grid-template-columns: 1fr; }
+      .terminal-body { min-height: 230px; }
+      footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="logo">TEST_LAB</div>
+      <div class="online">DEPLOYMENT ONLINE</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">// GITHUB PAGES ENVIRONMENT</div>
+        <h1>WEB TEST<br><span>IS LIVE.</span></h1>
+        <p class="lead">
+          一个用于检查 GitHub Pages 部署、JavaScript 执行、浏览器信息和响应式布局的测试网站。
+          页面完全由单个 HTML 文件运行，不依赖外部框架。
+        </p>
+
+        <div class="actions">
+          <button class="primary" id="runTest" aria-controls="terminal">RUN TEST</button>
+          <a class="link-btn secondary" href="updates.html">UPDATE HISTORY</a>
+          <a class="link-btn secondary" href="https://github.com/ZhongYeMay/test_web">VIEW SOURCE</a>
+        </div>
+      </section>
+
+      <section class="terminal" aria-label="测试终端">
+        <div class="terminal-head">
+          <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span>diagnostics.log</span>
+        </div>
+        <div class="terminal-body" id="terminal" role="log" aria-live="polite" aria-relevant="additions">
+          <div><span class="prompt">$</span> initialize test_web</div>
+          <div class="success">✓ HTML loaded</div>
+          <div class="success">✓ CSS loaded</div>
+          <div class="success">✓ JavaScript ready</div>
+          <div>点击 RUN TEST 开始浏览器测试。<span class="cursor" aria-hidden="true"></span></div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <div class="card-label">Local time</div>
+          <div class="metric" id="clock">--:--:--</div>
+          <p>由浏览器实时更新。</p>
+        </article>
+
+        <article class="card">
+          <div class="card-label">Viewport</div>
+          <div class="metric" id="viewport">-- × --</div>
+          <p>调整窗口大小可测试响应式页面。</p>
+        </article>
+
+        <article class="card">
+          <div class="card-label">Test runs</div>
+          <div class="metric" id="runs">0</div>
+          <p>记录当前页面会话运行测试的次数。</p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span>ZhongYeMay / test_web</span>
+      <span><a href="updates.html">Update history</a> · Hosted on GitHub Pages</span>
+    </footer>
+  </div>
+
+  <script>
+    const clock = document.getElementById('clock');
+    const viewport = document.getElementById('viewport');
+    const terminal = document.getElementById('terminal');
+    const runButton = document.getElementById('runTest');
+    const runCounter = document.getElementById('runs');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let runs = 0;
+
+    function updateClock() {
+      clock.textContent = new Date().toLocaleTimeString('zh-CN', { hour12: false });
+    }
+
+    function updateViewport() {
+      viewport.textContent = `${window.innerWidth} × ${window.innerHeight}`;
+    }
+
+    function addLine(text, className = '') {
+      const line = document.createElement('div');
+      if (className) line.className = className;
+      line.textContent = text;
+      terminal.appendChild(line);
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    runButton.addEventListener('click', () => {
+      runs += 1;
+      runCounter.textContent = runs;
+
+      addLine(`$ run diagnostics #${runs}`, 'prompt');
+      addLine('✓ JavaScript: OK', 'success');
+      addLine(`✓ Viewport: ${window.innerWidth} × ${window.innerHeight}`, 'success');
+      addLine(`✓ Language: ${navigator.language}`, 'success');
+      addLine(`✓ Reduced motion: ${reducedMotion.matches ? 'ON' : 'OFF'}`, 'success');
+      addLine('✓ Platform test completed', 'success');
+    });
+
+    updateClock();
+    updateViewport();
+    setInterval(updateClock, 1000);
+    window.addEventListener('resize', updateViewport);
+  </script>
+</body>
+</html>
