@@ -17,27 +17,28 @@
     <p class="lead">这里记录 test.html 的更新。每轮修改前都会保存上一版本，并提供对应历史 HTML。</p>
 
     <article class="entry">
-      <div class="entry-head"><span class="time">2026-08-12 07:03:19 UTC+8</span><span class="badge">UPDATE #042</span></div>
-      <h2>新增 Responsive Preview Lab</h2>
-      <p>新增一个明显可见的响应式组件测试实验室。访客无需反复调整整个浏览器窗口，即可在不同容器宽度下观察同一组件如何重新排版。</p>
+      <div class="entry-head"><span class="time">2026-08-12 06:03:07 UTC+8</span><span class="badge">UPDATE #041</span></div>
+      <h2>新增 WCAG 颜色对比度检查器</h2>
+      <p>新增一个明显可见的 COLOR CONTRAST CHECKER，用于在测试站内直接验证文字与背景配色的可读性。访客可以选择两种颜色、交换前景与背景，并实时看到 WCAG 对比度与不同文本等级的通过状态。</p>
       <ul>
-        <li>提供 360px、640px、960px 和 AUTO 四种预设宽度，并在桌面浏览器中支持直接拖动测试容器右侧边缘。</li>
-        <li>实时显示当前容器宽度，并把布局状态分成 narrow、medium 和 wide 三档。</li>
-        <li>示例组件使用 CSS Container Queries，根据自身容器宽度而不是 viewport 宽度切换布局。</li>
-        <li>使用 <code>ResizeObserver</code> 更新宽度读数，并为不支持它的环境保留窗口 resize 回退。</li>
-        <li>没有增加第三方脚本、付费依赖或外部运行时资源；原有诊断、地图、主题、密度、快捷键、性能和无障碍功能均保留。</li>
+        <li>实时计算 sRGB 相对亮度与对比度，直接显示精确到两位小数的比例。</li>
+        <li>分别显示普通文本 AA / AAA、大文本 AA / AAA，以及 UI / 图形 3:1 阈值的通过状态。</li>
+        <li>提供原生颜色选择器、SWAP 交换按钮和实时文字预览，结果变化通过 <code>aria-live</code> 状态区域同步给辅助技术。</li>
+        <li>快速导航会动态新增 <code>CONTRAST</code> 入口；组件放置在 Accessibility Preferences 前方，与现有诊断流程保持一致。</li>
+        <li>支持移动端、高对比度模式与 reduced-motion；没有增加第三方脚本、付费依赖或外部运行时资源。</li>
+        <li>本轮通过页面已有的本地脚本入口加载新组件，因此 <code>test.html</code> 与 <code>index.html</code> 仍保持同一当前页面 blob，原有功能不被重写。</li>
       </ul>
       <div class="meta">
-        <div>Archived file: <code>test+20260812-070319.html</code></div>
-        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/1f64384521855d858bf762e108592ce055ff7f73"><code>1f6438452185</code></a></div>
-        <div>Feature commit: <a href="https://github.com/ZhongYeMay/test_web/commit/5f995ba86ab9cff74ab28e0a5e7f761cf8955b03"><code>5f995ba86ab9</code></a></div>
+        <div>Archived file: <code>test+20260812-060307.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/9303135112c15b25e94136c5410d6dcecbeaa101"><code>9303135112c1</code></a></div>
+        <div>Feature commit: <a href="https://github.com/ZhongYeMay/test_web/commit/70c55908e30d23df3a32b04155251f94c7e65454"><code>70c55908e30d</code></a></div>
       </div>
-      <a class="download" href="test+20260812-070319.html" download>DOWNLOAD PREVIOUS HTML</a>
+      <a class="download" href="test+20260812-060307.html" download>DOWNLOAD PREVIOUS HTML</a>
     </article>
 
     <section class="previous" aria-labelledby="previousTitle">
-      <div class="previous-head"><div><h2 id="previousTitle">Earlier updates · #041 and older</h2><p class="archive-note">The prior history page is preserved byte-for-byte below, including every earlier entry and download link.</p></div><a class="back" href="updates-through-041.html">OPEN FULL PRIOR HISTORY ↗</a></div>
-      <iframe class="archive-frame" src="updates-through-041.html" title="Update history through update 041" loading="lazy"></iframe>
+      <div class="previous-head"><div><h2 id="previousTitle">Earlier updates · #040 and older</h2><p class="archive-note">The prior history page is preserved byte-for-byte below, including every earlier entry and download link.</p></div><a class="back" href="updates-through-040.html">OPEN FULL PRIOR HISTORY ↗</a></div>
+      <iframe class="archive-frame" src="updates-through-040.html" title="Update history through update 040" loading="lazy"></iframe>
     </section>
   </div>
 </body>
