@@ -18,6 +18,25 @@
     <p class="lead">这里记录 test.html 的每次自动更新。每轮更新前都会保存上一版本，并提供可直接下载的历史 HTML 文件。</p>
 
     <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-11 12:02:27 UTC+8</span><span class="badge">UPDATE #022</span></div>
+      <h2>让世界访客地图提供动态文本替代</h2>
+      <p>世界访客地图在国家/地区统计加载完成后，现在会把当前已映射访问总数与覆盖的国家/地区数量写入地图的可访问名称，帮助屏幕阅读器用户获得图表中的核心信息。</p>
+      <ul>
+        <li>保留原有 <code>role="img"</code> 和初始静态标签，加载完成后再用实际统计数据更新 <code>aria-label</code>。</li>
+        <li>复用页面已经计算出的 Mapped visits 与 Countries / regions，不新增网络请求、依赖或第三方脚本。</li>
+        <li>可视地图、访问计数、国家列表、隐私说明、诊断终端和其他现有功能保持不变。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续同步使用完全相同的页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-120227.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/508758da15d4002a123445c1aae8bc2252bce41f"><code>508758da15d4</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/d385fc5b54bcd938fedf5475e0a1beb4caa75c44"><code>d385fc5b54bc</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/793b575ad159a88094c025662a4157c30b3e00c9"><code>793b575ad159</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-120227.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
       <div class="entry-head"><span class="time">2026-08-11 11:00:42 UTC+8</span><span class="badge">UPDATE #021</span></div>
       <h2>优化页面内锚点跳转体验</h2>
       <p>为页面内锚点导航加入标准 CSS 平滑滚动，并为 WORLD VISITOR MAP 设置顶部滚动留白，让点击 VISITOR MAP 后的落点更自然，不会紧贴视口顶部。</p>
