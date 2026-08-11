@@ -17,6 +17,30 @@
     <p class="lead">这里记录 test.html 的更新。每轮修改前都会保存上一版本，并提供对应历史 HTML。</p>
 
     <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-11 23:03:23 UTC+8</span><span class="badge">UPDATE #034</span></div>
+      <h2>新增可视化 PAGE PERFORMANCE TIMELINE</h2>
+      <p>把本次页面导航的真实加载过程变成常驻可见的时间线，访客现在无需打开开发者工具即可查看 DOM Ready、完整 Load、传输量与 Performance Timeline 资源数量。</p>
+      <ul>
+        <li>使用浏览器 <code>PerformanceNavigationTiming</code> 读取当前导航的 Response、DOMContentLoaded 与 Load 时间。</li>
+        <li>新增横向 LOAD PHASE VISUALIZATION，用 RESPONSE、DOM READY、LOAD 三个标记直观显示加载阶段相对位置。</li>
+        <li>同时显示当前页面及可报告资源的传输量和 Resource Timing 条目数量；缓存或跨源限制导致字节不可见时会安全显示 <code>N/A</code>。</li>
+        <li>新增 <code>RE-MEASURE</code>，可在地图等异步资源继续加载后刷新资源数量与已报告传输量。</li>
+        <li>所有性能数据只在当前浏览器本地读取，不新增外部请求、分析 SDK 或持久化存储。</li>
+        <li>快速导航新增 <code>PERFORMANCE</code> 入口，并同步适配现有 DARK / LIGHT 主题与移动端布局。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 保持完全相同的当前页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-230323.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/da5f0f4fc158536784da6e5ab9c84d7457541f45"><code>da5f0f4fc158</code></a></div>
+        <div>Performance style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/ed42d22b787b8eaf9f8c2c81dbbd98a4f7184235"><code>ed42d22b787b</code></a></div>
+        <div>Performance behavior commit: <a href="https://github.com/ZhongYeMay/test_web/commit/60082ee3e2a2e7efbf24846befe4283b5c901712"><code>60082ee3e2a2</code></a></div>
+        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/257a28ee0848d3ede6ef335c1ff99e95ad9518ba"><code>257a28ee0848</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/c91e3b1c6a543920bb8bce6b02823d69fd36add0"><code>c91e3b1c6a54</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-230323.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
       <div class="entry-head"><span class="time">2026-08-11 22:00:04 UTC+8</span><span class="badge">UPDATE #033</span></div>
       <h2>新增浏览器与设备信息仪表板</h2>
       <p>把此前主要藏在诊断日志里的客户端环境信息变成常驻可见卡片，访客打开页面后即可直接查看浏览器愿意公开的平台与设备能力信号。</p>
