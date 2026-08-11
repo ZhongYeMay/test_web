@@ -17,6 +17,25 @@
     <p class="lead">这里记录 test.html 的更新。每轮修改前都会保存上一版本，并提供对应历史 HTML。</p>
 
     <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-12 03:58:17 UTC+8</span><span class="badge">UPDATE #039</span></div>
+      <h2>新增 DEFAULT / COMPACT 页面密度切换</h2>
+      <p>为越来越长的诊断页面新增一个明显可见的内容密度控制。默认模式完全保持原来的间距；Compact 模式会收紧主要面板、卡片和区块之间的留白，让桌面与移动设备在同一屏看到更多测试信息，同时不隐藏或删除任何功能。</p>
+      <ul>
+        <li>顶部新增 <code>VIEW DENSITY</code> 控件，可在 <code>DEFAULT</code> 与 <code>COMPACT</code> 之间即时切换。</li>
+        <li>两态按钮使用 <code>aria-pressed</code> 暴露当前状态，并继续使用原生 <code>&lt;button&gt;</code> 键盘行为。</li>
+        <li>Compact 仅改变布局密度：缩小面板内边距、区块间距和卡片间距；诊断、地图、报告、会话进度与其他现有能力全部保留。</li>
+        <li>选择通过同源 <code>localStorage</code> 保存，重新打开页面时会恢复；存储不可用时安全回退到 DEFAULT。</li>
+        <li>增加移动端与高对比度适配，没有第三方脚本、外部字体或付费依赖。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续指向完全相同的当前页面 blob。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260812-035817.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/7a0e214107310d8db48dcabe6fceb17ad2d62dfe"><code>7a0e21410731</code></a></div>
+      </div>
+      <a class="download" href="test+20260812-035817.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
       <div class="entry-head"><span class="time">2026-08-12 02:58:47 UTC+8</span><span class="badge">UPDATE #038</span></div>
       <h2>新增滚动感知的 QUICK NAV 当前区域追踪</h2>
       <p>长页面的顶部快速导航现在会跟随滚动位置自动高亮当前区域，并把对应导航项保持在可见范围内，让访客在测试面板越来越多时仍能快速判断自己所在的位置。</p>
