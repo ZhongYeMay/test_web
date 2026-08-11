@@ -17,6 +17,26 @@
     <p class="lead">这里记录 test.html 的更新。每轮修改前都会保存上一版本，并提供对应历史 HTML。</p>
 
     <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-11 14:03:15 UTC+8</span><span class="badge">UPDATE #025</span></div>
+      <h2>新增悬浮快速导航栏，让长页面更容易浏览</h2>
+      <p>在页面顶部新增一条明显可见的胶囊式快速导航，可直接跳到诊断终端、指标卡、访客地图和更新历史。导航使用原生 <code>nav</code> landmark，并保留键盘焦点样式、移动端横向滚动和 reduced-motion 兼容。</p>
+      <ul>
+        <li>新增 <code>DIAGNOSTICS</code>、<code>METRICS</code>、<code>VISITOR MAP</code>、<code>UPDATES</code> 四个入口。</li>
+        <li>导航滚动时保持在页面顶部，减少长页面来回滚动成本。</li>
+        <li>为目标区块加入额外 scroll margin，避免跳转后标题被悬浮导航遮挡。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续保持完全相同的当前页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-140315.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/0c0e7c0d9a87a1be0a8d7d3af5e4d7bdae77ec91"><code>0c0e7c0d9a87</code></a></div>
+        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/85daf34ac6e00ce4dfe1436af25bbf86088c6c56"><code>85daf34ac6e0</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/2b9baa026b41a699e3ed8f9014239aad249ec9f3"><code>2b9baa026b41</code></a></div>
+        <div>Navigation style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/900fe938913bfc2e13f39d3554c0b1aff3a63315"><code>900fe938913b</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-140315.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
       <div class="entry-head"><span class="time">2026-08-11 13:15:41 UTC+8</span><span class="badge">UPDATE #024</span></div>
       <h2>重做 IP 世界访客地图，移除 Google GeoChart 依赖</h2>
       <p>针对世界访客地图长期空白或无法显示的问题，更换整套地图渲染方式。地图轮廓现在作为仓库内的 SVG 文件随页面一起部署，不再依赖 Google Charts / gstatic；网络统计失败时地图本体仍会正常显示。</p>
