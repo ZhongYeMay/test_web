@@ -18,6 +18,26 @@
     <p class="lead">这里记录 test.html 的每次自动更新。每轮更新前都会保存上一版本，并提供可直接下载的历史 HTML 文件。</p>
 
     <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-11 11:00:42 UTC+8</span><span class="badge">UPDATE #021</span></div>
+      <h2>优化页面内锚点跳转体验</h2>
+      <p>为页面内锚点导航加入标准 CSS 平滑滚动，并为 WORLD VISITOR MAP 设置顶部滚动留白，让点击 VISITOR MAP 后的落点更自然，不会紧贴视口顶部。</p>
+      <ul>
+        <li>在文档滚动容器启用 <code>scroll-behavior: smooth</code>。</li>
+        <li>为地图面板加入 <code>scroll-margin-top: 24px</code>，改善锚点定位后的视觉间距。</li>
+        <li>已有 <code>prefers-reduced-motion: reduce</code> 规则会强制恢复即时滚动，因此尊重系统“减少动态效果”偏好。</li>
+        <li>访问计数、世界地图、国家统计、诊断终端、网络状态、复制日志和其他现有功能保持不变。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续同步使用完全相同的页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-110042.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/9c1e7158ffe3d38fecba98f5bc3cca60bcdcd268"><code>9c1e7158ffe3</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/f40d698c44a77b2cc05a75d3fccf4b952a11144e"><code>f40d698c44a7</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/27481b4ef07a95c6d3b168dd88ff48ffbc1ed3e9"><code>27481b4ef07a</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-110042.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
       <div class="entry-head"><span class="time">2026-08-11 10:01:36 UTC+8</span><span class="badge">UPDATE #020</span></div>
       <h2>让隐私说明获得清晰的键盘焦点指示</h2>
       <p>为世界访客地图中的原生 <code>&lt;summary&gt;</code> 隐私说明控件加入与页面其他交互元素一致的 <code>:focus-visible</code> 焦点环，让键盘用户在 Tab 导航时更容易确认当前焦点位置。</p>
