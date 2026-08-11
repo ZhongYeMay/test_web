@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#05070d" />
+  <title>TEST LAB · Update History</title>
+  <style>
+    :root { --bg:#05070d; --panel:rgba(255,255,255,.055); --line:rgba(255,255,255,.11); --text:#f5f7fb; --muted:#8d96a8; --accent:#7c9cff; --ok:#67e8a5; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; background:var(--bg); color:var(--text); font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace; }
+    .shell { width:min(920px,calc(100% - 32px)); margin:auto; padding:46px 0 70px; }
+    a { color:inherit; }
+    .top { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+    .logo { font-weight:800; letter-spacing:.14em; }
+    .back { text-decoration:none; border:1px solid var(--line); border-radius:9px; padding:10px 13px; background:var(--panel); }
+    h1 { margin:64px 0 12px; font-family:Inter,system-ui,sans-serif; font-size:clamp(2.6rem,8vw,5.2rem); letter-spacing:-.055em; }
+    .lead { color:var(--muted); line-height:1.7; max-width:720px; }
+    .entry { margin-top:32px; border:1px solid var(--line); border-radius:16px; padding:22px; background:var(--panel); }
+    .entry-head { display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+    .time { color:var(--accent); }
+    .badge { color:var(--ok); }
+    .entry h2 { margin:18px 0 10px; font-family:Inter,system-ui,sans-serif; font-size:1.35rem; }
+    .entry p, .entry li { color:var(--muted); line-height:1.65; }
+    .meta { margin-top:18px; padding-top:16px; border-top:1px solid var(--line); display:grid; gap:9px; font-size:13px; }
+    .download { display:inline-block; margin-top:16px; text-decoration:none; background:var(--text); color:#080b11; border-radius:9px; padding:11px 14px; font-weight:800; }
+    code { color:#c7d2fe; overflow-wrap:anywhere; }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation:none !important; transition:none !important; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="top">
+      <div class="logo">TEST_LAB / HISTORY</div>
+      <a class="back" href="test.html">← CURRENT TEST</a>
+    </div>
+    <h1>Update History</h1>
+    <p class="lead">这里记录 test.html 的每次自动更新。每轮更新前都会保存上一版本，并提供可直接下载的历史 HTML 文件。</p>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-11 09:02:52 UTC+8</span>
+        <span class="badge">UPDATE #019</span>
+      </div>
+      <h2>让动态数字指标保持稳定宽度</h2>
+      <p>为页面中的动态数字指标启用标准 <code>font-variant-numeric: tabular-nums</code>，让支持该 OpenType 数字特性的字体为各个数字分配相同宽度，减少时钟、测试次数和地图统计更新时的细微横向抖动。</p>
+      <ul>
+        <li>应用于主要 metric、地图汇总数字以及国家/地区访问计数。</li>
+        <li>仅增加一条 CSS 数字排版规则，不新增脚本、依赖或网络请求。</li>
+        <li>访问计数、国家统计、世界地图、诊断终端、网络状态和隐私逻辑保持不变。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续同步使用完全相同的页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-090252.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/00c11cae1eb6d2165d319c01e17b3e51ee9dade2"><code>00c11cae1eb6</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/4e56049acd0954600adaf840c184b251ad92ecaf"><code>4e56049acd09</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/7af6078212d20aa36ac4cae11f45f452417b8c38"><code>7af6078212d2</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-090252.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-11 08:02:42 UTC+8</span>
+        <span class="badge">UPDATE #018</span>
+      </div>
+      <h2>为禁用 JavaScript 的环境提供明确降级提示</h2>
+      <p>在页面加入原生 <code>&lt;noscript&gt;</code> 提示：当浏览器禁用 JavaScript 时，明确说明实时诊断、时钟、网络状态和访问地图不会更新，同时提示静态内容与更新历史仍可浏览。</p>
+      <ul>
+        <li>正常启用 JavaScript 时不会显示任何额外提示，现有视觉和功能保持不变。</li>
+        <li>不增加第三方脚本、依赖或新的网络请求。</li>
+        <li>继续保留访问计数、国家统计、世界地图、复制日志、导航计时和辅助功能。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续同步使用完全相同的页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-080242.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/53bbc22b8208a259a20ac84597886cfb9751e5f7"><code>53bbc22b8208</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/12cc36be14b6b583f93658a864b6a72513cb6152"><code>12cc36be14b6</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/0836cd917982a3bf063743cd773113e3ea64eb2f"><code>0836cd917982</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-080242.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-11 07:04:32 UTC+8</span>
+        <span class="badge">UPDATE #017</span>
+      </div>
+      <h2>声明页面使用深色浏览器 UI 配色</h2>
+      <p>为固定深色主题加入标准 <code>&lt;meta name="color-scheme" content="dark"&gt;</code> 声明，让支持该标准的浏览器把滚动条、原生表单控件及其他浏览器提供的 UI 与页面深色外观协调显示。</p>
+      <ul>
+        <li>只增加一个标准 HTML 元数据声明，不增加 JavaScript、外部脚本或依赖。</li>
+        <li>现有主题颜色、访问计数、世界地图、国家统计、网络状态和诊断逻辑保持不变。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续同步使用完全相同的页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-070432.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/13a3f263190218e74094bf49dd4da8892636a942"><code>13a3f2631902</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/dc22cc3cbbac1b508edf99824e0d5ba4638b5062"><code>dc22cc3cbbac</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/c3223dc3fee5d102c8c367be897c69c133095111"><code>c3223dc3fee5</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-070432.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-11 06:00:33 UTC+8</span>
+        <span class="badge">UPDATE #016</span>
+      </div>
+      <h2>向辅助技术公开世界地图加载状态</h2>
+      <p>为 WORLD VISITOR MAP 区域加入 <code>aria-busy</code> 状态。地图和国家统计加载期间标记为忙碌，加载流程无论成功或失败结束后都会恢复为非忙碌状态。</p>
+      <ul>
+        <li>地图区域初始设置 <code>aria-busy="true"</code>。</li>
+        <li>地图统计加载流程在 <code>finally</code> 中统一恢复为 <code>false</code>。</li>
+        <li>不改变访问计数、国家统计来源、地图绘制方式、隐私策略或其他诊断功能。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 同步使用本轮版本。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-060033.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/888fdd7193d1fae5301a518c7321beffd101b895"><code>888fdd7193d1</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/b81496b2c9a3ea49917c84d491e09fe6c06e0c54"><code>b81496b2c9a3</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/99d50b9c5b39288edb6769138aee82b9ee9c0175"><code>99d50b9c5b39</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-060033.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-11 05:02:55 UTC+8</span>
+        <span class="badge">UPDATE #015</span>
+      </div>
+      <h2>为 RUN TEST 增加安全上下文诊断</h2>
+      <p>使用浏览器原生 <code>window.isSecureContext</code> 在诊断终端中显示当前页面是否运行在安全上下文中，帮助判断 Clipboard 等受安全环境限制的 Web API 是否具备基础运行条件。</p>
+      <ul>
+        <li>RUN TEST 新增 <code>Secure context: YES/NO</code> 诊断行。</li>
+        <li>仅进行原生布尔能力检测，不请求权限、不上传数据，也不增加第三方依赖。</li>
+        <li>访问计数、国家统计、世界地图、网络状态、Navigation Timing、复制日志与后台时钟逻辑保持不变。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-050255.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/91345311baf2d5bf3b24b8de4d169701de81114b"><code>91345311baf2</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/95485389ad03d1ec1a53531ffe5f48eafe9421c3"><code>95485389ad03</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-050255.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-11 04:03:20 UTC+8</span>
+        <span class="badge">UPDATE #014</span>
+      </div>
+      <h2>提前建立 Google Charts 关键连接</h2>
+      <p>为页面在 head 中立即使用的 Google Charts loader 来源加入原生 <code>rel="preconnect"</code> 资源提示，让支持该提示的浏览器可以更早完成到 gstatic 的 DNS、TCP 与 TLS 连接准备，减少首次请求第三方地图脚本时的连接等待。</p>
+      <ul>
+        <li>仅对页面首屏就确定需要的 <code>https://www.gstatic.com</code> 使用 preconnect，没有对所有第三方接口过度预连接。</li>
+        <li>不改变 Google Charts 加载方式、访问计数、国家统计、世界地图数据逻辑或隐私策略。</li>
+        <li>不增加 JavaScript、付费依赖或新的外部脚本。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续同步使用同一份页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-040320.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/c36b6dfda402f786aef80370a9be5e1816516e74"><code>c36b6dfda402</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/e4378dc3691de6ab005507f0f8f80bec0de61f3c"><code>e4378dc3691d</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-040320.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-11 03:08:50 UTC+8</span>
+        <span class="badge">UPDATE #013</span>
+      </div>
+      <h2>为诊断终端增加一键复制日志</h2>
+      <p>在 diagnostics.log 标题栏加入 COPY LOG 按钮，可把当前终端中的诊断结果以纯文本复制到系统剪贴板，方便分享和排查问题。</p>
+      <ul>
+        <li>使用浏览器原生 Clipboard API 的 <code>navigator.clipboard.writeText()</code>，不增加第三方依赖。</li>
+        <li>复制成功时短暂显示 <code>COPIED ✓</code>；权限或浏览器能力不可用时显示 <code>COPY FAILED</code>，不会影响 RUN TEST。</li>
+        <li>保留访问计数、世界地图、国家统计、网络状态、Navigation Timing、高对比度和后台时钟逻辑。</li>
+        <li>index.html 与 test.html 继续同步使用同一份页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-030850.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/099fed6c6338b7d7b192f2c79a6bd5f979cc589e"><code>099fed6c6338</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/0f9c3fc02b0c1721a3f5505f65b534050cb6f265"><code>0f9c3fc02b0c</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-030850.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-11 01:58:35 UTC+8</span>
+        <span class="badge">UPDATE #012</span>
+      </div>
+      <h2>响应系统“提高对比度”偏好</h2>
+      <p>为现有深色界面加入 CSS prefers-contrast: more 适配。普通显示模式完全保持原样；当操作系统或浏览器请求更高对比度时，页面会增强边框、次级文字以及空心标题的可辨识度。</p>
+      <ul>
+        <li>使用浏览器原生 <code>prefers-contrast: more</code> 媒体查询，不增加 JavaScript 或外部依赖。</li>
+        <li>高对比度偏好下提高面板边界和 muted 文本的对比度，并增强 WEB TEST 空心标题描边。</li>
+        <li>默认主题视觉保持不变；访问计数、世界地图、国家统计、网络状态、Navigation Timing 与后台时钟逻辑保持不变。</li>
+        <li>index.html 与 test.html 继续同步使用同一份页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-015835.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/cb8a6437aa2b0f71bdc3bd890094fc8421dd92d2"><code>cb8a6437aa2b</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/e7bfb63f4a1defa82f855cb552f15270d6114356"><code>e7bfb63f4a1d</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/a35aaca821131e9c445ae0e61d1dd12d2172e342"><code>a35aaca82113</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-015835.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-11 00:59:41 UTC+8</span>
+        <span class="badge">UPDATE #011</span>
+      </div>
+      <h2>为 RUN TEST 增加 Navigation Timing 诊断</h2>
+      <p>使用浏览器原生 PerformanceNavigationTiming，在诊断终端中显示当前页面的导航类型以及本次文档导航耗时，帮助区分普通打开、刷新和前进/后退恢复等情况。</p>
+      <ul>
+        <li>RUN TEST 新增 Navigation 诊断行，例如 <code>navigate · 123 ms</code>、<code>reload · 95 ms</code> 或 <code>back_forward · 41 ms</code>。</li>
+        <li>浏览器不支持 Navigation Timing Level 2 时安全显示 <code>unsupported</code>，不会影响其他测试。</li>
+        <li>不新增外部依赖，也不修改访问计数、世界地图、国家统计、网络状态或隐私说明。</li>
+        <li>index.html 与 test.html 继续同步使用同一份页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-005941.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/ee3f346671942ca6c00e0e33b3e2c5a1ccf4aedf"><code>ee3f34667194</code></a></div>
+        <div>Cleanup commit: <a href="https://github.com/ZhongYeMay/test_web/commit/4b2bdff0b6744c094b5fed6df4fff86ace94d652"><code>4b2bdff0b674</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/00e10dfc22565bad6796d6d35886d03a8fc41eeb"><code>00e10dfc2256</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-005941.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-10 23:58:07 UTC+8</span>
+        <span class="badge">UPDATE #010</span>
+      </div>
+      <h2>将地图隐私说明改为原生可展开内容</h2>
+      <p>把世界访客地图底部较长的隐私说明改为浏览器原生 details/summary disclosure。页面默认更简洁，需要查看隐私细节时仍可通过鼠标、触摸或键盘展开完整说明。</p>
+      <ul>
+        <li>使用原生 <code>&lt;details&gt;</code> 与 <code>&lt;summary&gt;</code>，不引入新的脚本或依赖。</li>
+        <li>隐私信息内容保持不变，仅调整呈现方式，减少地图区域的视觉噪音。</li>
+        <li>访问计数、国家统计、地图请求、网络诊断、后台时钟和键盘跳转功能保持不变。</li>
+        <li>index.html 与 test.html 同步使用本轮版本，根首页继续保持一致。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260810-235807.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/43658c47925816770aadad0eeca158ac6d9a5de4"><code>43658c479258</code></a></div>
+      </div>
+      <a class="download" href="test+20260810-235807.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-10 23:04:40 UTC+8</span>
+        <span class="badge">UPDATE #009</span>
+      </div>
+      <h2>减少屏外世界地图的初始渲染开销</h2>
+      <p>为页面下方的世界访客地图区域加入 CSS content-visibility 与预估占位尺寸，让支持该特性的浏览器在地图仍位于视口外时可以跳过其布局和绘制，并在接近视口时正常渲染。</p>
+      <ul>
+        <li>地图区域使用 <code>content-visibility:auto</code> 延后屏外渲染工作。</li>
+        <li>使用 <code>contain-intrinsic-size:720px</code> 保留稳定的预估空间，降低进入视口时的布局跳动风险。</li>
+        <li>访问计数、国家统计、地图数据请求、网络诊断、后台时钟和键盘功能保持不变。</li>
+        <li>index.html 与 test.html 同步使用本轮版本，根首页继续保持一致。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260810-230440.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/e7960a1be9ffa3c322dff38ea17d3d2b9f6ef17b"><code>e7960a1be9ff</code></a></div>
+      </div>
+      <a class="download" href="test+20260810-230440.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-10 22:05:20 UTC+8</span>
+        <span class="badge">UPDATE #008</span>
+      </div>
+      <h2>优化地图语义结构，并同步根首页</h2>
+      <p>把世界访客地图的可见标题从普通 span 改为真正的 h2 标题，使文档层级和辅助技术导航更清晰；同时把最新 test.html 同步到 index.html，避免直接访问 GitHub Pages 根网址时仍看到缺少访问统计和地图的旧页面。</p>
+      <ul>
+        <li>WORLD VISITOR MAP 现在使用语义化 h2 标题，并继续由 aria-labelledby 标记地图区域。</li>
+        <li>访问计数、国家统计、世界地图、网络状态、后台时钟和诊断功能保持不变。</li>
+        <li>index.html 与本轮更新后的 test.html 使用相同内容，修复根首页版本分叉。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260810-220520.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/22d254df7ca392c3261d3b8a1ee93167a0b7f31d"><code>22d254df7ca3</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/7611b0159279626da2a4eeae6e95d836ea684df4"><code>7611b0159279</code></a></div>
+      </div>
+      <a class="download" href="test+20260810-220520.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-10 21:02:08 UTC+8</span>
+        <span class="badge">UPDATE #007</span>
+      </div>
+      <h2>新增实时网络连接状态诊断</h2>
+      <p>根据浏览器的 Navigator.onLine 状态和 online/offline 事件，在页首新增动态网络连接提示，并把当前网络提示加入 RUN TEST 诊断输出。该状态仅作为浏览器连接提示，不会据此禁用页面功能。</p>
+      <ul>
+        <li>页首同时保留部署状态，并新增 NETWORK ONLINE / NETWORK OFFLINE 状态。</li>
+        <li>网络状态变化时无需刷新页面即可自动更新提示。</li>
+        <li>离线状态使用不同指示颜色，并通过 aria-live 向辅助技术报告变化。</li>
+        <li>RUN TEST 新增 Network hint 诊断项。</li>
+        <li>不修改访问计数、国家统计、世界地图、跳转链接或后台时钟逻辑。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260810-210208.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/4db994cd1eca12b35f0f309f690f5fed4e06bd08"><code>4db994cd1eca</code></a></div>
+      </div>
+      <a class="download" href="test+20260810-210208.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-10 20:06:40 UTC+8</span>
+        <span class="badge">UPDATE #006</span>
+      </div>
+      <h2>新增键盘“跳到主要内容”入口</h2>
+      <p>根据 WCAG 2.4.1 的 bypass-blocks 建议，在页面最前方加入键盘可聚焦的跳转链接，让只用键盘或辅助技术的访客可以直接绕过页首区域进入主要内容。</p>
+      <ul>
+        <li>新增页面第一个可聚焦控件“跳到主要内容”。</li>
+        <li>链接默认隐藏在视口外，获得键盘焦点时清晰显示。</li>
+        <li>main 区域增加稳定的焦点目标，激活链接后焦点进入主要内容。</li>
+        <li>不修改访问计数、国家统计、世界地图或后台时钟逻辑。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260810-200640.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/c278480526076e50518374c7e912626b99ce994a"><code>c27848052607</code></a></div>
+      </div>
+      <a class="download" href="test+20260810-200640.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-10 19:04:01 UTC+8</span>
+        <span class="badge">UPDATE #005</span>
+      </div>
+      <h2>后台标签页暂停时钟更新</h2>
+      <p>使用 Page Visibility API 优化每秒更新的本地时间：页面切到后台或窗口最小化时停止时钟定时器，重新可见时立即刷新并恢复，减少不可见页面的无意义 UI 更新。</p>
+      <ul>
+        <li>新增 visibilitychange 监听，按页面可见状态启停时钟。</li>
+        <li>页面回到前台时立即刷新时间，避免显示过期值。</li>
+        <li>RUN TEST 诊断新增当前 Page visibility 状态。</li>
+        <li>不修改访问计数、国家统计或世界地图的数据逻辑。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260810-190401.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/f485107135b9c6dc5b791fc5fd82990ce4964074"><code>f485107135b9c</code></a></div>
+      </div>
+      <a class="download" href="test+20260810-190401.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-10 18:43:00 UTC+8</span>
+        <span class="badge">UPDATE #004</span>
+      </div>
+      <h2>修复 Total visits 显示不可用</h2>
+      <p>原来的 Total visits 完全依赖浏览器跨域 fetch CounterAPI；请求被网络、限流或跨域策略阻断时会直接显示 N/A。本次把总访问显示切换为 hits.sh 图片式计数器，使总访问数与地图使用的 CounterAPI 解耦。</p>
+      <ul>
+        <li>Total visits 不再依赖跨域 JSON fetch 才能显示。</li>
+        <li>图片加载本身完成计数并显示累计访问量。</li>
+        <li>点击访问数字可打开对应的 hits.sh 统计页面。</li>
+        <li>地图统计故障或 CounterAPI 限流不再影响 Total visits。</li>
+        <li>保留地图现有国家级隐私保护设计。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260810-184300.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/ac26dc2ee6b046a459567235dc23a37bb092c51a"><code>ac26dc2ee6b0</code></a></div>
+      </div>
+      <a class="download" href="test+20260810-184300.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-10 18:35:00 UTC+8</span>
+        <span class="badge">UPDATE #003</span>
+      </div>
+      <h2>新增隐私保护的世界访问地图</h2>
+      <p>新增按国家/地区聚合的访问世界地图。访问者的 IP 仅用于解析国家/地区代码，本站不保存或展示完整 IP、城市、邮编或精确经纬度。</p>
+      <ul>
+        <li>本次访问自动登记到对应国家/地区累计计数。</li>
+        <li>世界地图按国家/地区累计访问量着色。</li>
+        <li>新增已定位访问数、访问国家/地区数量和更早未定位访问数。</li>
+        <li>保留旧的 Total visits 总访问次数。</li>
+        <li>UPDATE #003 之前的访问没有地理记录，因此无法事后恢复其来源地。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260810-183500.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/f0ed7f053e0e33a282542c2a3cc11a9b2614431d"><code>f0ed7f053e0e</code></a></div>
+      </div>
+      <a class="download" href="test+20260810-183500.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-10 18:31:00 UTC+8</span>
+        <span class="badge">UPDATE #002</span>
+      </div>
+      <h2>新增全站累计访问次数</h2>
+      <p>为静态 GitHub Pages 页面接入 CounterAPI V1 计数器，每次加载当前 test.html 时累计一次页面访问，并在页面直接显示总访问次数。</p>
+      <ul>
+        <li>新增 Total visits 数据卡片。</li>
+        <li>每次加载 test.html 自动向计数器递增 1。</li>
+        <li>计数服务异常时显示 N/A，不影响网站其他功能。</li>
+        <li>四项数据卡片改为桌面四列、中等屏幕两列、手机单列布局。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260810-183100.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/9ce58290a98e613f2d82e8db862b2f91fca4975f"><code>9ce58290a98e</code></a></div>
+      </div>
+      <a class="download" href="test+20260810-183100.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <span class="time">2026-08-10 18:12:00 UTC+8</span>
+        <span class="badge">UPDATE #001</span>
+      </div>
+      <h2>建立版本归档，并加入无障碍改进</h2>
+      <p>首次测试时仓库尚不存在 test.html，因此把当时的 index.html 作为基线历史版本保存，然后创建新的 test.html。</p>
+      <ul>
+        <li>加入系统“减少动画”偏好支持。</li>
+        <li>加入更清晰的键盘焦点样式。</li>
+        <li>动态诊断日志改为 ARIA live log。</li>
+        <li>加入 UPDATE HISTORY 入口。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260810-181200.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/58ec22fd9dfb033b16a1ee74a32ea015de32b28f"><code>58ec22fd9dfb</code></a></div>
+      </div>
+      <a class="download" href="test+20260810-181200.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+  </div>
+</body>
+</html>
