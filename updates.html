@@ -17,69 +17,28 @@
     <p class="lead">这里记录 test.html 的更新。每轮修改前都会保存上一版本，并提供对应历史 HTML。</p>
 
     <article class="entry">
-      <div class="entry-head"><span class="time">2026-08-12 05:01:11 UTC+8</span><span class="badge">UPDATE #040</span></div>
-      <h2>新增键盘焦点可见性测试</h2>
-      <p>为测试站新增一个明显可见的 FOCUS TEST 工具。访客可以开启测试后使用 Tab / Shift+Tab 遍历整页可操作元素，实时查看当前焦点元素与可访问名称，并用高对比度双层焦点轮廓判断键盘导航是否清晰可见。</p>
+      <div class="entry-head"><span class="time">2026-08-12 06:03:07 UTC+8</span><span class="badge">UPDATE #041</span></div>
+      <h2>新增 WCAG 颜色对比度检查器</h2>
+      <p>新增一个明显可见的 COLOR CONTRAST CHECKER，用于在测试站内直接验证文字与背景配色的可读性。访客可以选择两种颜色、交换前景与背景，并实时看到 WCAG 对比度与不同文本等级的通过状态。</p>
       <ul>
-        <li>左下角新增 <code>FOCUS TEST</code> 入口与独立测试面板，不会替换已有快捷键、滚动进度或诊断功能。</li>
-        <li>面板实时显示可 Tab 到的元素数量、键盘焦点移动次数、当前元素类型和可访问名称。</li>
-        <li>测试开启后，仅对键盘 Tab 导航产生的当前焦点增加 3px 明亮轮廓与第二层高对比度外圈；鼠标点击不会被误判成键盘焦点测试。</li>
-        <li>Escape 可关闭面板，STOP 会完整撤销测试状态；高对比度模式下使用系统颜色进行适配。</li>
-        <li>功能仅由仓库自身的本地 CSS / JavaScript 提供，没有增加第三方脚本、付费服务或外部运行时依赖。</li>
-        <li>修改前的 <code>test.html</code> 已使用原 blob 原样保存；<code>index.html</code> 与 <code>test.html</code> 仍保持完全相同。</li>
+        <li>实时计算 sRGB 相对亮度与对比度，直接显示精确到两位小数的比例。</li>
+        <li>分别显示普通文本 AA / AAA、大文本 AA / AAA，以及 UI / 图形 3:1 阈值的通过状态。</li>
+        <li>提供原生颜色选择器、SWAP 交换按钮和实时文字预览，结果变化通过 <code>aria-live</code> 状态区域同步给辅助技术。</li>
+        <li>快速导航会动态新增 <code>CONTRAST</code> 入口；组件放置在 Accessibility Preferences 前方，与现有诊断流程保持一致。</li>
+        <li>支持移动端、高对比度模式与 reduced-motion；没有增加第三方脚本、付费依赖或外部运行时资源。</li>
+        <li>本轮通过页面已有的本地脚本入口加载新组件，因此 <code>test.html</code> 与 <code>index.html</code> 仍保持同一当前页面 blob，原有功能不被重写。</li>
       </ul>
       <div class="meta">
-        <div>Archived file: <code>test+20260812-050111.html</code></div>
-        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/b300326fef5f8128ac58fd5f32857b0f620e14cf"><code>b300326fef5f</code></a></div>
+        <div>Archived file: <code>test+20260812-060307.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/9303135112c15b25e94136c5410d6dcecbeaa101"><code>9303135112c1</code></a></div>
+        <div>Feature commit: <a href="https://github.com/ZhongYeMay/test_web/commit/70c55908e30d23df3a32b04155251f94c7e65454"><code>70c55908e30d</code></a></div>
       </div>
-      <a class="download" href="test+20260812-050111.html" download>DOWNLOAD PREVIOUS HTML</a>
-    </article>
-
-    <article class="entry">
-      <div class="entry-head"><span class="time">2026-08-12 03:58:17 UTC+8</span><span class="badge">UPDATE #039</span></div>
-      <h2>新增 DEFAULT / COMPACT 页面密度切换</h2>
-      <p>为越来越长的诊断页面新增一个明显可见的内容密度控制。默认模式完全保持原来的间距；Compact 模式会收紧主要面板、卡片和区块之间的留白，让桌面与移动设备在同一屏看到更多测试信息，同时不隐藏或删除任何功能。</p>
-      <ul>
-        <li>顶部新增 <code>VIEW DENSITY</code> 控件，可在 <code>DEFAULT</code> 与 <code>COMPACT</code> 之间即时切换。</li>
-        <li>两态按钮使用 <code>aria-pressed</code> 暴露当前状态，并继续使用原生 <code>&lt;button&gt;</code> 键盘行为。</li>
-        <li>Compact 仅改变布局密度：缩小面板内边距、区块间距和卡片间距；诊断、地图、报告、会话进度与其他现有能力全部保留。</li>
-        <li>选择通过同源 <code>localStorage</code> 保存，重新打开页面时会恢复；存储不可用时安全回退到 DEFAULT。</li>
-        <li>增加移动端与高对比度适配，没有第三方脚本、外部字体或付费依赖。</li>
-        <li><code>index.html</code> 与 <code>test.html</code> 继续指向完全相同的当前页面 blob。</li>
-      </ul>
-      <div class="meta">
-        <div>Archived file: <code>test+20260812-035817.html</code></div>
-        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/7a0e214107310d8db48dcabe6fceb17ad2d62dfe"><code>7a0e21410731</code></a></div>
-      </div>
-      <a class="download" href="test+20260812-035817.html" download>DOWNLOAD PREVIOUS HTML</a>
-    </article>
-
-    <article class="entry">
-      <div class="entry-head"><span class="time">2026-08-12 02:58:47 UTC+8</span><span class="badge">UPDATE #038</span></div>
-      <h2>新增滚动感知的 QUICK NAV 当前区域追踪</h2>
-      <p>长页面的顶部快速导航现在会跟随滚动位置自动高亮当前区域，并把对应导航项保持在可见范围内，让访客在测试面板越来越多时仍能快速判断自己所在的位置。</p>
-      <ul>
-        <li>使用 <code>IntersectionObserver</code> 异步观察 FLOW、SESSION、ACCESSIBILITY、PERFORMANCE、REPORT、DIAGNOSTICS、METRICS 与 VISITOR MAP。</li>
-        <li>当前区域使用醒目的实心导航状态，并新增 <code>VIEW · …</code> 位置标签。</li>
-        <li>当前导航项同步设置 <code>aria-current="location"</code>，让视觉高亮也能被辅助技术识别。</li>
-        <li>在不支持 IntersectionObserver 的环境中，使用轻量的 <code>requestAnimationFrame</code> 滚动回退逻辑。</li>
-        <li>横向导航会自动把当前项滚动到视野中，并尊重 <code>prefers-reduced-motion</code>。</li>
-        <li>没有增加第三方脚本、分析服务或外部运行时依赖。</li>
-        <li><code>index.html</code> 与 <code>test.html</code> 继续使用完全相同的当前页面 blob。</li>
-      </ul>
-      <div class="meta">
-        <div>Archived file: <code>test+20260812-025847.html</code></div>
-        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/f2b46c2977401890bd3cff9c4bfa4d936132d41c"><code>f2b46c297740</code></a></div>
-        <div>Navigation asset commit: <a href="https://github.com/ZhongYeMay/test_web/commit/c2ab99d0ef6e09814d698df31a7ff9039873dcc1"><code>c2ab99d0ef6e</code></a></div>
-        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/54c3e9d7e6f2b12a87f2e9cd7380e21d55acb74f"><code>54c3e9d7e6f2</code></a></div>
-        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/231912e18157ef2e6bcb659e87f009614092ef76"><code>231912e18157</code></a></div>
-      </div>
-      <a class="download" href="test+20260812-025847.html" download>DOWNLOAD PREVIOUS HTML</a>
+      <a class="download" href="test+20260812-060307.html" download>DOWNLOAD PREVIOUS HTML</a>
     </article>
 
     <section class="previous" aria-labelledby="previousTitle">
-      <div class="previous-head"><div><h2 id="previousTitle">Earlier updates · #037 and older</h2><p class="archive-note">The previous history page is preserved byte-for-byte below, including every earlier entry and download link.</p></div><a class="back" href="updates-through-037.html">OPEN FULL PRIOR HISTORY ↗</a></div>
-      <iframe class="archive-frame" src="updates-through-037.html" title="Update history through update 037" loading="lazy"></iframe>
+      <div class="previous-head"><div><h2 id="previousTitle">Earlier updates · #040 and older</h2><p class="archive-note">The prior history page is preserved byte-for-byte below, including every earlier entry and download link.</p></div><a class="back" href="updates-through-040.html">OPEN FULL PRIOR HISTORY ↗</a></div>
+      <iframe class="archive-frame" src="updates-through-040.html" title="Update history through update 040" loading="lazy"></iframe>
     </section>
   </div>
 </body>
