@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#05070d" />
+  <meta name="color-scheme" content="dark" />
+  <title>TEST LAB · Update History</title>
+  <style>
+    :root{--bg:#05070d;--panel:rgba(255,255,255,.055);--line:rgba(255,255,255,.11);--text:#f5f7fb;--muted:#8d96a8;--accent:#7c9cff;--ok:#67e8a5}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace}.shell{width:min(920px,calc(100% - 32px));margin:auto;padding:46px 0 70px}a{color:inherit}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.logo{font-weight:800;letter-spacing:.14em}.back{display:inline-block;text-decoration:none;border:1px solid var(--line);border-radius:9px;padding:10px 13px;background:var(--panel)}.back:focus-visible,.download:focus-visible{outline:2px solid var(--accent);outline-offset:3px}h1{margin:64px 0 12px;font-family:Inter,system-ui,sans-serif;font-size:clamp(2.6rem,8vw,5.2rem);letter-spacing:-.055em}.lead{color:var(--muted);line-height:1.7;max-width:720px}.entry{margin-top:32px;border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--panel)}.entry-head{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}.time{color:var(--accent)}.badge{color:var(--ok)}.entry h2{margin:18px 0 10px;font-family:Inter,system-ui,sans-serif;font-size:1.35rem}.entry p,.entry li{color:var(--muted);line-height:1.65}.meta{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:grid;gap:9px;font-size:13px}.download{display:inline-block;margin-top:16px;text-decoration:none;background:var(--text);color:#080b11;border-radius:9px;padding:11px 14px;font-weight:800}code{color:#c7d2fe;overflow-wrap:anywhere}.archive-wrap{margin-top:34px}.archive-wrap h2{font-family:Inter,system-ui,sans-serif;font-size:1.15rem}.archive-note{color:var(--muted);line-height:1.6}.archive-frame{width:100%;height:760px;border:1px solid var(--line);border-radius:16px;background:var(--bg)}@media(max-width:720px){.archive-frame{height:640px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="top"><div class="logo">TEST_LAB / HISTORY</div><a class="back" href="test.html">← CURRENT TEST</a></div>
+    <h1>Update History</h1>
+    <p class="lead">这里记录 test.html 的每次自动更新。每轮更新前都会保存上一版本，并提供可直接下载的历史 HTML 文件。</p>
+
+    <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-11 13:02:26 UTC+8</span><span class="badge">UPDATE #023</span></div>
+      <h2>优化首页简介的多行排版</h2>
+      <p>为首页简介段落加入原生 <code>text-wrap: balance</code>，让支持该能力的浏览器在简介换成多行时更均衡地分配文字，改善不同屏幕宽度下的视觉节奏和可读性。</p>
+      <ul>
+        <li>仅作用于短小的首页简介，不改变正文内容、DOM 结构或任何 JavaScript 逻辑。</li>
+        <li>该 CSS 属于渐进增强；不支持的浏览器会安全忽略并继续使用原来的普通换行。</li>
+        <li>访问计数、世界地图、国家统计、诊断终端、网络状态、复制日志和其他现有功能保持不变。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续同步使用完全相同的页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-130226.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/ac3fe077e15889942eb252d511f4be5ec2fea651"><code>ac3fe077e158</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/7edc9babfabedb3e55c5bffb8e4a71a90fd8679c"><code>7edc9babfabe</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/ec1e1334fd96645b24cdfdfb8b907c9178da6b5f"><code>ec1e1334fd96</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-130226.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-11 12:02:27 UTC+8</span><span class="badge">UPDATE #022</span></div>
+      <h2>让世界访客地图提供动态文本替代</h2>
+      <p>世界访客地图在国家/地区统计加载完成后，现在会把当前已映射访问总数与覆盖的国家/地区数量写入地图的可访问名称，帮助屏幕阅读器用户获得图表中的核心信息。</p>
+      <ul>
+        <li>保留原有 <code>role="img"</code> 和初始静态标签，加载完成后再用实际统计数据更新 <code>aria-label</code>。</li>
+        <li>复用页面已经计算出的 Mapped visits 与 Countries / regions，不新增网络请求、依赖或第三方脚本。</li>
+        <li>可视地图、访问计数、国家列表、隐私说明、诊断终端和其他现有功能保持不变。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续同步使用完全相同的页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-120227.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/508758da15d4002a123445c1aae8bc2252bce41f"><code>508758da15d4</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/d385fc5b54bcd938fedf5475e0a1beb4caa75c44"><code>d385fc5b54bc</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/793b575ad159a88094c025662a4157c30b3e00c9"><code>793b575ad159</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-120227.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-11 11:00:42 UTC+8</span><span class="badge">UPDATE #021</span></div>
+      <h2>优化页面内锚点跳转体验</h2>
+      <p>为页面内锚点导航加入标准 CSS 平滑滚动，并为 WORLD VISITOR MAP 设置顶部滚动留白，让点击 VISITOR MAP 后的落点更自然，不会紧贴视口顶部。</p>
+      <ul>
+        <li>在文档滚动容器启用 <code>scroll-behavior: smooth</code>。</li>
+        <li>为地图面板加入 <code>scroll-margin-top: 24px</code>，改善锚点定位后的视觉间距。</li>
+        <li>已有 <code>prefers-reduced-motion: reduce</code> 规则会强制恢复即时滚动，因此尊重系统“减少动态效果”偏好。</li>
+        <li>访问计数、世界地图、国家统计、诊断终端、网络状态、复制日志和其他现有功能保持不变。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续同步使用完全相同的页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-110042.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/9c1e7158ffe3d38fecba98f5bc3cca60bcdcd268"><code>9c1e7158ffe3</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/f40d698c44a77b2cc05a75d3fccf4b952a11144e"><code>f40d698c44a7</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/27481b4ef07a95c6d3b168dd88ff48ffbc1ed3e9"><code>27481b4ef07a</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-110042.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-11 10:01:36 UTC+8</span><span class="badge">UPDATE #020</span></div>
+      <h2>让隐私说明获得清晰的键盘焦点指示</h2>
+      <p>为世界访客地图中的原生 <code>&lt;summary&gt;</code> 隐私说明控件加入与页面其他交互元素一致的 <code>:focus-visible</code> 焦点环，让键盘用户在 Tab 导航时更容易确认当前焦点位置。</p>
+      <ul>
+        <li>沿用现有 2px accent 焦点样式与 3px outline offset，不引入新的脚本或依赖。</li>
+        <li>仅影响键盘等需要可见焦点提示的交互状态，鼠标普通浏览和页面默认视觉保持不变。</li>
+        <li>访问计数、世界地图、国家统计、网络状态、复制日志、Navigation Timing 和后台时钟逻辑保持不变。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续同步使用完全相同的页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-100136.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/b92d9d1eabd1506a8ff5f45e89a5402465557e25"><code>b92d9d1eabd1</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/74e173d5018922619508cbc081b41da6c29ca9cd"><code>74e173d50189</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/26622ca2516981e763f4db0c92f9e69c6d57e359"><code>26622ca25169</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-100136.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <section class="archive-wrap" aria-labelledby="earlierTitle">
+      <h2 id="earlierTitle">Earlier updates</h2>
+      <p class="archive-note">UPDATE #001–#019 are preserved below exactly as they appeared before this update, including their historical download links.</p>
+      <iframe class="archive-frame" src="updates+20260811-100136.html" title="Earlier update history entries"></iframe>
+      <p class="archive-note"><a href="updates+20260811-100136.html">Open earlier history as a standalone page</a></p>
+    </section>
+  </div>
+</body>
+</html>
