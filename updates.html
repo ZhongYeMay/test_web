@@ -17,6 +17,26 @@
     <p class="lead">这里记录 test.html 的更新。每轮修改前都会保存上一版本，并提供对应历史 HTML。</p>
 
     <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-12 01:02:07 UTC+8</span><span class="badge">UPDATE #036</span></div>
+      <h2>新增实时 ACCESSIBILITY PREFERENCES 信号面板</h2>
+      <p>把浏览器通过用户偏好 Media Queries 暴露的无障碍与界面偏好变成常驻可见的诊断面板，让访客无需打开开发者工具即可确认当前系统偏好。</p>
+      <ul>
+        <li>新增 <code>REDUCED MOTION</code>、<code>CONTRAST</code>、<code>FORCED COLORS</code> 与 <code>SYSTEM SCHEME</code> 四项实时信号。</li>
+        <li>使用 <code>matchMedia()</code> 读取 <code>prefers-reduced-motion</code>、<code>prefers-contrast</code>、<code>forced-colors</code> 和 <code>prefers-color-scheme</code>。</li>
+        <li>系统或浏览器偏好变化时自动刷新；同时提供 <code>REFRESH SIGNALS</code> 手动重新读取。</li>
+        <li>面板只读取当前浏览器状态，不会修改系统设置、不上传偏好数据，也没有新增第三方依赖。</li>
+        <li>状态摘要使用 <code>role="status"</code>，并继续适配现有 DARK / LIGHT 主题、强制配色和移动端布局。</li>
+        <li>快速导航新增 <code>ACCESSIBILITY</code> 入口；<code>index.html</code> 与 <code>test.html</code> 继续保持完全相同。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260812-010207.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/037d924848f3f5eb75253e57f1a395ede4068110"><code>037d924848f3</code></a></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/88a59c079255d70001c1a483851ddd53a1f5cbb8"><code>88a59c079255</code></a></div>
+      </div>
+      <a class="download" href="test+20260812-010207.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
       <div class="entry-head"><span class="time">2026-08-11 23:59:29 UTC+8</span><span class="badge">UPDATE #035</span></div>
       <h2>新增本地 DIAGNOSTIC REPORT 导出工具</h2>
       <p>把页面已有的环境、性能、地图状态与诊断日志真正变成可带走的测试结果。访客现在可以在页面内预览关键状态，然后复制整份诊断报告或下载为 TXT 文件。</p>
