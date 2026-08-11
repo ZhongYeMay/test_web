@@ -17,6 +17,25 @@
     <p class="lead">这里记录 test.html 的更新。每轮修改前都会保存上一版本，并提供对应历史 HTML。</p>
 
     <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-12 05:01:11 UTC+8</span><span class="badge">UPDATE #040</span></div>
+      <h2>新增键盘焦点可见性测试</h2>
+      <p>为测试站新增一个明显可见的 FOCUS TEST 工具。访客可以开启测试后使用 Tab / Shift+Tab 遍历整页可操作元素，实时查看当前焦点元素与可访问名称，并用高对比度双层焦点轮廓判断键盘导航是否清晰可见。</p>
+      <ul>
+        <li>左下角新增 <code>FOCUS TEST</code> 入口与独立测试面板，不会替换已有快捷键、滚动进度或诊断功能。</li>
+        <li>面板实时显示可 Tab 到的元素数量、键盘焦点移动次数、当前元素类型和可访问名称。</li>
+        <li>测试开启后，仅对键盘 Tab 导航产生的当前焦点增加 3px 明亮轮廓与第二层高对比度外圈；鼠标点击不会被误判成键盘焦点测试。</li>
+        <li>Escape 可关闭面板，STOP 会完整撤销测试状态；高对比度模式下使用系统颜色进行适配。</li>
+        <li>功能仅由仓库自身的本地 CSS / JavaScript 提供，没有增加第三方脚本、付费服务或外部运行时依赖。</li>
+        <li>修改前的 <code>test.html</code> 已使用原 blob 原样保存；<code>index.html</code> 与 <code>test.html</code> 仍保持完全相同。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260812-050111.html</code></div>
+        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/b300326fef5f8128ac58fd5f32857b0f620e14cf"><code>b300326fef5f</code></a></div>
+      </div>
+      <a class="download" href="test+20260812-050111.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
       <div class="entry-head"><span class="time">2026-08-12 03:58:17 UTC+8</span><span class="badge">UPDATE #039</span></div>
       <h2>新增 DEFAULT / COMPACT 页面密度切换</h2>
       <p>为越来越长的诊断页面新增一个明显可见的内容密度控制。默认模式完全保持原来的间距；Compact 模式会收紧主要面板、卡片和区块之间的留白，让桌面与移动设备在同一屏看到更多测试信息，同时不隐藏或删除任何功能。</p>
