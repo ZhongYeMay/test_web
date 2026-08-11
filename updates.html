@@ -17,6 +17,28 @@
     <p class="lead">这里记录 test.html 的更新。每轮修改前都会保存上一版本，并提供对应历史 HTML。</p>
 
     <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-11 18:59:01 UTC+8</span><span class="badge">UPDATE #030</span></div>
+      <h2>新增实时 SYSTEM STATUS 浏览器能力面板</h2>
+      <p>在响应式视口指示器与诊断终端之间加入一整块明显可见的状态面板，让访客无需阅读终端日志就能直接确认页面运行所依赖的几项核心浏览器能力。</p>
+      <ul>
+        <li>实时显示 JavaScript、网络连接、本地存储和本地 SVG 世界地图资源四项状态，并使用绿/红状态点区分可用与异常。</li>
+        <li>新增 <code>REFRESH STATUS</code> 按钮，可随时重新检测；网络 online/offline 变化也会自动刷新状态。</li>
+        <li>状态摘要使用 <code>role="status"</code> 与礼貌级 live region，让动态变化可被辅助技术感知。</li>
+        <li>状态面板会自动适配桌面、平板与手机布局，不新增第三方依赖，也不改变现有 IP 地图和诊断逻辑。</li>
+        <li>快速导航会新增 <code>STATUS</code> 入口，Latest Update 卡也会显示本轮 UPDATE #030。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 保持完全相同的当前页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-185901.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/a6ed6d336fab648601d963cc171c8103462e16f5"><code>a6ed6d336fab</code></a></div>
+        <div>Status panel asset commit: <a href="https://github.com/ZhongYeMay/test_web/commit/fbad4314631b587a8421e995faa5f14ccfc06638"><code>fbad4314631b</code></a></div>
+        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/e15b6f1a9d6079922f541f20803dd44542ab709f"><code>e15b6f1a9d60</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/5f7ebebae6cc99255dc4a613e069311c478e355d"><code>5f7ebebae6cc</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-185901.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
       <div class="entry-head"><span class="time">2026-08-11 18:03:29 UTC+8</span><span class="badge">UPDATE #029</span></div>
       <h2>新增明显可见的 AUTO / DARK / LIGHT 主题切换</h2>
       <p>在页面顶部加入三段式主题控制，让访客可以即时切换深色和浅色外观；AUTO 会根据系统颜色偏好自动选择主题，同时手动选择会保存在当前浏览器中。</p>
