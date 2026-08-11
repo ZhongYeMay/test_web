@@ -17,26 +17,34 @@
     <p class="lead">这里记录 test.html 的更新。每轮修改前都会保存上一版本，并提供对应历史 HTML。</p>
 
     <article class="entry">
-      <div class="entry-head"><span class="time">2026-08-11 20:00:56 UTC+8</span><span class="badge">UPDATE #031</span></div>
-      <h2>新增明显可见的滚动进度与一键返回顶部控件</h2>
-      <p>针对测试页面内容逐步增长，在页面右下角加入固定的阅读进度控件。访客滚动页面时可以实时看到当前位置，并可随时一键返回顶部。</p>
+      <div class="entry-head"><span class="time">2026-08-11 21:02:03 UTC+8</span><span class="badge">UPDATE #032</span></div>
+      <h2>新增可见的键盘快捷操作面板</h2>
+      <p>为越来越多的测试功能增加一套明确可见的键盘操作层。页面左下角现在有 SHORTCUTS 入口，可打开快捷键说明对话框，并直接通过组合键运行常用动作。</p>
       <ul>
-        <li>右下角新增 <code>PAGE 0–100%</code> 浮动控件，底部进度条随页面滚动实时变化。</li>
-        <li>点击控件会返回页面顶部；用户启用 reduced motion 时自动取消平滑滚动动画。</li>
-        <li>滚动计算采用轻量的 50ms 节流，避免在高频 <code>scroll</code> 事件中持续修改 DOM。</li>
-        <li>控件最小高度超过 WCAG 2.2 的 24×24 CSS px 最小目标要求，并保留明显键盘焦点。</li>
-        <li>修正上一轮 SYSTEM STATUS 脚本会覆盖 Latest Update 卡的问题，状态检测功能本身保持不变。</li>
+        <li>新增 <code>Alt+Shift+R</code> 运行诊断、<code>Alt+Shift+M</code> 跳到访客地图、<code>Alt+Shift+H</code> 打开更新历史、<code>Alt+Shift+T</code> 返回顶部。</li>
+        <li>快捷键在输入框、文本区域、选择控件和可编辑内容中不会触发，减少误操作。</li>
+        <li>使用原生 <code>&lt;dialog&gt;</code> 展示说明；打开后焦点进入对话框，Escape 可关闭，并提供显式关闭按钮。</li>
+        <li>相关操作元素通过 <code>aria-keyshortcuts</code> 向辅助技术公开已实现的快捷键。</li>
+        <li>样式支持现有 DARK / LIGHT 主题与 reduced-motion 设置，不引入第三方脚本或外部依赖。</li>
         <li><code>index.html</code> 与 <code>test.html</code> 保持完全相同的当前页面内容。</li>
       </ul>
       <div class="meta">
-        <div>Archived file: <code>test+20260811-200056.html</code></div>
-        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/7007fb715b7b11406697fc0a46d99a41f615716c"><code>7007fb715b7b</code></a></div>
-        <div>Progress style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/26da61d1746931afd1814723126c2fbc94568720"><code>26da61d17469</code></a></div>
-        <div>Progress behavior commit: <a href="https://github.com/ZhongYeMay/test_web/commit/7d9023740ec6eae6785aa723d3c4d0fc53ff080b"><code>7d9023740ec6</code></a></div>
-        <div>Status compatibility commit: <a href="https://github.com/ZhongYeMay/test_web/commit/d7769d145fe1253f70318dbc2cc92cfbb3346a03"><code>d7769d145fe1</code></a></div>
-        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/a995614a0bb45784490c48d55818e0ce7e4db3cf"><code>a995614a0bb4</code></a></div>
-        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/513a71ad2bb0ea9eafa8d0cf580babb6916f61e7"><code>513a71ad2bb0</code></a></div>
+        <div>Archived file: <code>test+20260811-210203.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/76010e51748497b8b68024a80996eb199964cba2"><code>76010e517484</code></a></div>
+        <div>Shortcut style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/fc80e7c0638dc14c7b2dadab5276b3c4b77f788a"><code>fc80e7c0638d</code></a></div>
+        <div>Shortcut behavior commit: <a href="https://github.com/ZhongYeMay/test_web/commit/9fcf372049f38e794fe82328db27b38035021bcf"><code>9fcf372049f3</code></a></div>
+        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/9ea7f5d2f709ff790a606c25d56b8454a8ffee0e"><code>9ea7f5d2f709</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/d419242d9fdf8d37133891d78453c4b8c5adbb98"><code>d419242d9fdf</code></a></div>
       </div>
+      <a class="download" href="test+20260811-210203.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-11 20:00:56 UTC+8</span><span class="badge">UPDATE #031</span></div>
+      <h2>新增明显可见的滚动进度与一键返回顶部控件</h2>
+      <p>针对测试页面内容逐步增长，在页面右下角加入固定的阅读进度控件。访客滚动页面时可以实时看到当前位置，并可随时一键返回顶部。</p>
+      <ul><li>右下角新增 <code>PAGE 0–100%</code> 浮动控件，底部进度条随页面滚动实时变化。</li><li>点击控件会返回页面顶部；用户启用 reduced motion 时自动取消平滑滚动动画。</li><li>滚动计算采用轻量的 50ms 节流，避免在高频 <code>scroll</code> 事件中持续修改 DOM。</li><li>控件最小高度超过 WCAG 2.2 的 24×24 CSS px 最小目标要求，并保留明显键盘焦点。</li><li>修正上一轮 SYSTEM STATUS 脚本会覆盖 Latest Update 卡的问题，状态检测功能本身保持不变。</li><li><code>index.html</code> 与 <code>test.html</code> 保持完全相同的当前页面内容。</li></ul>
+      <div class="meta"><div>Archived file: <code>test+20260811-200056.html</code></div><div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/7007fb715b7b11406697fc0a46d99a41f615716c"><code>7007fb715b7b</code></a></div><div>Progress style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/26da61d1746931afd1814723126c2fbc94568720"><code>26da61d17469</code></a></div><div>Progress behavior commit: <a href="https://github.com/ZhongYeMay/test_web/commit/7d9023740ec6eae6785aa723d3c4d0fc53ff080b"><code>7d9023740ec6</code></a></div><div>Status compatibility commit: <a href="https://github.com/ZhongYeMay/test_web/commit/d7769d145fe1253f70318dbc2cc92cfbb3346a03"><code>d7769d145fe1</code></a></div><div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/a995614a0bb45784490c48d55818e0ce7e4db3cf"><code>a995614a0bb4</code></a></div><div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/513a71ad2bb0ea9eafa8d0cf580babb6916f61e7"><code>513a71ad2bb0</code></a></div></div>
       <a class="download" href="test+20260811-200056.html" download>DOWNLOAD PREVIOUS HTML</a>
     </article>
 
@@ -44,148 +52,22 @@
       <div class="entry-head"><span class="time">2026-08-11 18:59:01 UTC+8</span><span class="badge">UPDATE #030</span></div>
       <h2>新增实时 SYSTEM STATUS 浏览器能力面板</h2>
       <p>在响应式视口指示器与诊断终端之间加入一整块明显可见的状态面板，让访客无需阅读终端日志就能直接确认页面运行所依赖的几项核心浏览器能力。</p>
-      <ul>
-        <li>实时显示 JavaScript、网络连接、本地存储和本地 SVG 世界地图资源四项状态，并使用绿/红状态点区分可用与异常。</li>
-        <li>新增 <code>REFRESH STATUS</code> 按钮，可随时重新检测；网络 online/offline 变化也会自动刷新状态。</li>
-        <li>状态摘要使用 <code>role="status"</code> 与礼貌级 live region，让动态变化可被辅助技术感知。</li>
-        <li>状态面板会自动适配桌面、平板与手机布局，不新增第三方依赖，也不改变现有 IP 地图和诊断逻辑。</li>
-        <li>快速导航会新增 <code>STATUS</code> 入口，Latest Update 卡也会显示本轮 UPDATE #030。</li>
-        <li><code>index.html</code> 与 <code>test.html</code> 保持完全相同的当前页面内容。</li>
-      </ul>
-      <div class="meta">
-        <div>Archived file: <code>test+20260811-185901.html</code></div>
-        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/a6ed6d336fab648601d963cc171c8103462e16f5"><code>a6ed6d336fab</code></a></div>
-        <div>Status panel asset commit: <a href="https://github.com/ZhongYeMay/test_web/commit/fbad4314631b587a8421e995faa5f14ccfc06638"><code>fbad4314631b</code></a></div>
-        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/e15b6f1a9d6079922f541f20803dd44542ab709f"><code>e15b6f1a9d60</code></a></div>
-        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/5f7ebebae6cc99255dc4a613e069311c478e355d"><code>5f7ebebae6cc</code></a></div>
-      </div>
+      <ul><li>实时显示 JavaScript、网络连接、本地存储和本地 SVG 世界地图资源四项状态，并使用绿/红状态点区分可用与异常。</li><li>新增 <code>REFRESH STATUS</code> 按钮，可随时重新检测；网络 online/offline 变化也会自动刷新状态。</li><li>状态摘要使用 <code>role="status"</code> 与礼貌级 live region，让动态变化可被辅助技术感知。</li><li>状态面板会自动适配桌面、平板与手机布局，不新增第三方依赖，也不改变现有 IP 地图和诊断逻辑。</li><li>快速导航会新增 <code>STATUS</code> 入口，Latest Update 卡也会显示本轮 UPDATE #030。</li><li><code>index.html</code> 与 <code>test.html</code> 保持完全相同的当前页面内容。</li></ul>
+      <div class="meta"><div>Archived file: <code>test+20260811-185901.html</code></div><div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/a6ed6d336fab648601d963cc171c8103462e16f5"><code>a6ed6d336fab</code></a></div><div>Status panel asset commit: <a href="https://github.com/ZhongYeMay/test_web/commit/fbad4314631b587a8421e995faa5f14ccfc06638"><code>fbad4314631b</code></a></div><div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/e15b6f1a9d6079922f541f20803dd44542ab709f"><code>e15b6f1a9d60</code></a></div><div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/5f7ebebae6cc99255dc4a613e069311c478e355d"><code>5f7ebebae6cc</code></a></div></div>
       <a class="download" href="test+20260811-185901.html" download>DOWNLOAD PREVIOUS HTML</a>
     </article>
 
-    <article class="entry">
-      <div class="entry-head"><span class="time">2026-08-11 18:03:29 UTC+8</span><span class="badge">UPDATE #029</span></div>
-      <h2>新增明显可见的 AUTO / DARK / LIGHT 主题切换</h2>
-      <p>在页面顶部加入三段式主题控制，让访客可以即时切换深色和浅色外观；AUTO 会根据系统颜色偏好自动选择主题，同时手动选择会保存在当前浏览器中。</p>
-      <ul>
-        <li>顶部新增 <code>AUTO</code>、<code>DARK</code>、<code>LIGHT</code> 三个主题按钮，并用 <code>aria-pressed</code> 表示当前选择。</li>
-        <li>浅色主题会同步调整页面背景、终端、地图面板、卡片与文字颜色，而不会改变诊断、访问计数或 IP 地图逻辑。</li>
-        <li><code>AUTO</code> 使用浏览器的 <code>prefers-color-scheme</code> 结果，并在系统主题变化时自动跟随。</li>
-        <li>手动选择使用浏览器本地存储保存，不引入第三方依赖或外部脚本。</li>
-        <li><code>index.html</code> 与 <code>test.html</code> 保持完全相同的当前页面内容。</li>
-      </ul>
-      <div class="meta">
-        <div>Archived file: <code>test+20260811-180329.html</code></div>
-        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/4d2fb756dee2777c25120ba6f39646f9bcabd242"><code>4d2fb756dee2</code></a></div>
-        <div>Theme style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/20c214da980226c0ef4a4dc4ea321ee3d9b90e29"><code>20c214da9802</code></a></div>
-        <div>Theme behavior commit: <a href="https://github.com/ZhongYeMay/test_web/commit/94874b621cec0d7523f1df6ca5918322b98fcb67"><code>94874b621cec</code></a></div>
-        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/c80994a4039ed676322eea57a57e67739425bfb7"><code>c80994a4039e</code></a></div>
-        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/718c4d09ae9b1ff0ab03f0ae66298daf1de7009f"><code>718c4d09ae9b</code></a></div>
-      </div>
-      <a class="download" href="test+20260811-180329.html" download>DOWNLOAD PREVIOUS HTML</a>
-    </article>
+    <article class="entry"><div class="entry-head"><span class="time">2026-08-11 18:03:29 UTC+8</span><span class="badge">UPDATE #029</span></div><h2>新增明显可见的 AUTO / DARK / LIGHT 主题切换</h2><p>在页面顶部加入三段式主题控制，让访客可以即时切换深色和浅色外观；AUTO 会根据系统颜色偏好自动选择主题，同时手动选择会保存在当前浏览器中。</p><ul><li>顶部新增 <code>AUTO</code>、<code>DARK</code>、<code>LIGHT</code> 三个主题按钮，并用 <code>aria-pressed</code> 表示当前选择。</li><li>浅色主题会同步调整页面背景、终端、地图面板、卡片与文字颜色，而不会改变诊断、访问计数或 IP 地图逻辑。</li><li><code>AUTO</code> 使用浏览器的 <code>prefers-color-scheme</code> 结果，并在系统主题变化时自动跟随。</li><li>手动选择使用浏览器本地存储保存，不引入第三方依赖或外部脚本。</li><li><code>index.html</code> 与 <code>test.html</code> 保持完全相同的当前页面内容。</li></ul><div class="meta"><div>Archived file: <code>test+20260811-180329.html</code></div><div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/4d2fb756dee2777c25120ba6f39646f9bcabd242"><code>4d2fb756dee2</code></a></div><div>Theme style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/20c214da980226c0ef4a4dc4ea321ee3d9b90e29"><code>20c214da9802</code></a></div><div>Theme behavior commit: <a href="https://github.com/ZhongYeMay/test_web/commit/94874b621cec0d7523f1df6ca5918322b98fcb67"><code>94874b621cec</code></a></div><div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/c80994a4039ed676322eea57a57e67739425bfb7"><code>c80994a4039e</code></a></div><div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/718c4d09ae9b1ff0ab03f0ae66298daf1de7009f"><code>718c4d09ae9b</code></a></div></div><a class="download" href="test+20260811-180329.html" download>DOWNLOAD PREVIOUS HTML</a></article>
 
-    <article class="entry">
-      <div class="entry-head"><span class="time">2026-08-11 17:02:42 UTC+8</span><span class="badge">UPDATE #028</span></div>
-      <h2>新增实时响应式视口模式指示器</h2>
-      <p>在 Test Flow 与诊断终端之间加入明显可见的 CURRENT VIEWPORT MODE 面板。拖动浏览器宽度时，MOBILE、TABLET、DESKTOP 三个区间会由 CSS Media Queries 自动切换高亮，方便直接测试响应式断点。</p>
-      <ul>
-        <li>新增 MOBILE（&lt; 640px）、TABLET（640–1023px）、DESKTOP（≥ 1024px）三个可视区间。</li>
-        <li>高亮完全由 CSS <code>@media</code> 驱动，不增加新的 JavaScript 或外部依赖。</li>
-        <li>组件在窄屏下自动改为单列，避免自身引入横向滚动。</li>
-        <li>Latest Update 卡同步更新到 UPDATE #028，并展示本轮归档文件。</li>
-        <li><code>index.html</code> 与 <code>test.html</code> 保持完全相同的当前页面内容。</li>
-      </ul>
-      <div class="meta">
-        <div>Archived file: <code>test+20260811-170242.html</code></div>
-        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/f026fb62262a3bf5f5be2ea4a74e399437ea7dd8"><code>f026fb62262a</code></a></div>
-        <div>Style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/5d5ff4f0da7d99968226c98891b6a51901cdb918"><code>5d5ff4f0da7d</code></a></div>
-        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/76cd5bf31b77cdd20dbe3fadc98b6adc9015a200"><code>76cd5bf31b77</code></a></div>
-        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/c5738fbd1cceba1780370f5f2596837f7bc3c42d"><code>c5738fbd1cce</code></a></div>
-      </div>
-      <a class="download" href="test+20260811-170242.html" download>DOWNLOAD PREVIOUS HTML</a>
-    </article>
+    <article class="entry"><div class="entry-head"><span class="time">2026-08-11 17:02:42 UTC+8</span><span class="badge">UPDATE #028</span></div><h2>新增实时响应式视口模式指示器</h2><p>在 Test Flow 与诊断终端之间加入明显可见的 CURRENT VIEWPORT MODE 面板。拖动浏览器宽度时，MOBILE、TABLET、DESKTOP 三个区间会由 CSS Media Queries 自动切换高亮，方便直接测试响应式断点。</p><ul><li>新增 MOBILE（&lt; 640px）、TABLET（640–1023px）、DESKTOP（≥ 1024px）三个可视区间。</li><li>高亮完全由 CSS <code>@media</code> 驱动，不增加新的 JavaScript 或外部依赖。</li><li>组件在窄屏下自动改为单列，避免自身引入横向滚动。</li><li>Latest Update 卡同步更新到 UPDATE #028，并展示本轮归档文件。</li><li><code>index.html</code> 与 <code>test.html</code> 保持完全相同的当前页面内容。</li></ul><div class="meta"><div>Archived file: <code>test+20260811-170242.html</code></div><div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/f026fb62262a3bf5f5be2ea4a74e399437ea7dd8"><code>f026fb62262a</code></a></div><div>Style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/5d5ff4f0da7d99968226c98891b6a51901cdb918"><code>5d5ff4f0da7d</code></a></div><div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/76cd5bf31b77cdd20dbe3fadc98b6adc9015a200"><code>76cd5bf31b77</code></a></div><div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/c5738fbd1cceba1780370f5f2596837f7bc3c42d"><code>c5738fbd1cce</code></a></div></div><a class="download" href="test+20260811-170242.html" download>DOWNLOAD PREVIOUS HTML</a></article>
 
-    <article class="entry">
-      <div class="entry-head"><span class="time">2026-08-11 15:58:16 UTC+8</span><span class="badge">UPDATE #027</span></div>
-      <h2>新增明显可见的四步 Test Flow 快速测试指南</h2>
-      <p>在首屏与诊断终端之间加入一整块高对比度 Test Flow，让第一次打开页面的访客能直接按顺序完成核心测试，而不是只看到一组分散的按钮和指标。</p>
-      <ul>
-        <li>新增 Run diagnostics、Resize viewport、Inspect visitor map、Review history 四步流程。</li>
-        <li>流程使用有序列表表达测试顺序，并通过响应式 CSS Grid 在桌面与手机上自动重排。</li>
-        <li>快速导航新增 <code>FLOW</code> 锚点，可随时跳回测试指南。</li>
-        <li>Latest Update 卡同步更新到 UPDATE #027，直接展示本轮变化和对应归档。</li>
-        <li><code>index.html</code> 与 <code>test.html</code> 保持完全相同的当前页面内容。</li>
-      </ul>
-      <div class="meta">
-        <div>Archived file: <code>test+20260811-155816.html</code></div>
-        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/0af5fb5c6ef79f18d3bd50a9bfcc865268ff985b"><code>0af5fb5c6ef7</code></a></div>
-        <div>Style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/40b85082500a10deef8db18ac57d9bed2a9f6faf"><code>40b85082500a</code></a></div>
-        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/7ff5f16aa02bb8d118cc6b7248eefd05bce4beb4"><code>7ff5f16aa02b</code></a></div>
-        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/b696f2604589d412e69d3dfae04713726ee6288e"><code>b696f2604589</code></a></div>
-      </div>
-      <a class="download" href="test+20260811-155816.html" download>DOWNLOAD PREVIOUS HTML</a>
-    </article>
+    <article class="entry"><div class="entry-head"><span class="time">2026-08-11 15:58:16 UTC+8</span><span class="badge">UPDATE #027</span></div><h2>新增明显可见的四步 Test Flow 快速测试指南</h2><p>在首屏与诊断终端之间加入一整块高对比度 Test Flow，让第一次打开页面的访客能直接按顺序完成核心测试，而不是只看到一组分散的按钮和指标。</p><ul><li>新增 Run diagnostics、Resize viewport、Inspect visitor map、Review history 四步流程。</li><li>流程使用有序列表表达测试顺序，并通过响应式 CSS Grid 在桌面与手机上自动重排。</li><li>快速导航新增 <code>FLOW</code> 锚点，可随时跳回测试指南。</li><li>Latest Update 卡同步更新到 UPDATE #027，直接展示本轮变化和对应归档。</li><li><code>index.html</code> 与 <code>test.html</code> 保持完全相同的当前页面内容。</li></ul><div class="meta"><div>Archived file: <code>test+20260811-155816.html</code></div><div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/0af5fb5c6ef79f18d3bd50a9bfcc865268ff985b"><code>0af5fb5c6ef7</code></a></div><div>Style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/40b85082500a10deef8db18ac57d9bed2a9f6faf"><code>40b85082500a</code></a></div><div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/7ff5f16aa02bb8d118cc6b7248eefd05bce4beb4"><code>7ff5f16aa02b</code></a></div><div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/b696f2604589d412e69d3dfae04713726ee6288e"><code>b696f2604589</code></a></div></div><a class="download" href="test+20260811-155816.html" download>DOWNLOAD PREVIOUS HTML</a></article>
 
-    <article class="entry">
-      <div class="entry-head"><span class="time">2026-08-11 15:04:44 UTC+8</span><span class="badge">UPDATE #026</span></div>
-      <h2>首页新增明显可见的 Latest Update 状态卡</h2>
-      <p>在首屏操作区下方加入一张高对比度更新状态卡，让访客无需打开历史页就能立即看到最近一次改动、更新时间和对应的修改前归档版本。</p>
-      <ul>
-        <li>新增 <code>NEW UPDATE</code> 状态标识和 UPDATE #026 摘要。</li>
-        <li>直接展示本轮时间戳与归档文件 <code>test+20260811-150444.html</code>。</li>
-        <li>提供 <code>VIEW FULL HISTORY</code> 入口，继续保留完整更新历史。</li>
-        <li>新增独立的 <code>assets/latest-update.css</code>，桌面端三栏布局、移动端自动堆叠，不改动现有地图与诊断 JavaScript。</li>
-        <li><code>index.html</code> 与 <code>test.html</code> 继续保持完全相同的当前页面内容。</li>
-      </ul>
-      <div class="meta">
-        <div>Archived file: <code>test+20260811-150444.html</code></div>
-        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/5138d0fbe2187746ea7f0020a162932796bd48f3"><code>5138d0fbe218</code></a></div>
-        <div>Style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/51d3e79b2e857f87bf73f4679b4d9173ff437ba7"><code>51d3e79b2e85</code></a></div>
-        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/bc3ebc1a5fd9925a41094c1557a2dfacf53447a0"><code>bc3ebc1a5fd9</code></a></div>
-        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/0bfc721ed018eb6dd0bb3ac6cc96a1a2ee04b242"><code>0bfc721ed018</code></a></div>
-      </div>
-      <a class="download" href="test+20260811-150444.html" download>DOWNLOAD PREVIOUS HTML</a>
-    </article>
+    <article class="entry"><div class="entry-head"><span class="time">2026-08-11 15:04:44 UTC+8</span><span class="badge">UPDATE #026</span></div><h2>首页新增明显可见的 Latest Update 状态卡</h2><p>在首屏操作区下方加入一张高对比度更新状态卡，让访客无需打开历史页就能立即看到最近一次改动、更新时间和对应的修改前归档版本。</p><ul><li>新增 <code>NEW UPDATE</code> 状态标识和 UPDATE #026 摘要。</li><li>直接展示本轮时间戳与归档文件 <code>test+20260811-150444.html</code>。</li><li>提供 <code>VIEW FULL HISTORY</code> 入口，继续保留完整更新历史。</li><li>新增独立的 <code>assets/latest-update.css</code>，桌面端三栏布局、移动端自动堆叠，不改动现有地图与诊断 JavaScript。</li><li><code>index.html</code> 与 <code>test.html</code> 继续保持完全相同的当前页面内容。</li></ul><div class="meta"><div>Archived file: <code>test+20260811-150444.html</code></div><div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/5138d0fbe2187746ea7f0020a162932796bd48f3"><code>5138d0fbe218</code></a></div><div>Style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/51d3e79b2e857f87bf73f4679b4d9173ff437ba7"><code>51d3e79b2e85</code></a></div><div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/bc3ebc1a5fd9925a41094c1557a2dfacf53447a0"><code>bc3ebc1a5fd9</code></a></div><div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/0bfc721ed018eb6dd0bb3ac6cc96a1a2ee04b242"><code>0bfc721ed018</code></a></div></div><a class="download" href="test+20260811-150444.html" download>DOWNLOAD PREVIOUS HTML</a></article>
 
-    <article class="entry">
-      <div class="entry-head"><span class="time">2026-08-11 14:03:15 UTC+8</span><span class="badge">UPDATE #025</span></div>
-      <h2>新增悬浮快速导航栏，让长页面更容易浏览</h2>
-      <p>在页面顶部新增一条明显可见的胶囊式快速导航，可直接跳到诊断终端、指标卡、访客地图和更新历史。导航使用原生 <code>nav</code> landmark，并保留键盘焦点样式、移动端横向滚动和 reduced-motion 兼容。</p>
-      <ul>
-        <li>新增 <code>DIAGNOSTICS</code>、<code>METRICS</code>、<code>VISITOR MAP</code>、<code>UPDATES</code> 四个入口。</li>
-        <li>导航滚动时保持在页面顶部，减少长页面来回滚动成本。</li>
-        <li>为目标区块加入额外 scroll margin，避免跳转后标题被悬浮导航遮挡。</li>
-        <li><code>index.html</code> 与 <code>test.html</code> 继续保持完全相同的当前页面内容。</li>
-      </ul>
-      <div class="meta">
-        <div>Archived file: <code>test+20260811-140315.html</code></div>
-        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/0c0e7c0d9a87a1be0a8d7d3af5e4d7bdae77ec91"><code>0c0e7c0d9a87</code></a></div>
-        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/85daf34ac6e00ce4dfe1436af25bbf86088c6c56"><code>85daf34ac6e0</code></a></div>
-        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/2b9baa026b41a699e3ed8f9014239aad249ec9f3"><code>2b9baa026b41</code></a></div>
-        <div>Navigation style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/900fe938913bfc2e13f39d3554c0b1aff3a63315"><code>900fe938913b</code></a></div>
-      </div>
-      <a class="download" href="test+20260811-140315.html" download>DOWNLOAD PREVIOUS HTML</a>
-    </article>
+    <article class="entry"><div class="entry-head"><span class="time">2026-08-11 14:03:15 UTC+8</span><span class="badge">UPDATE #025</span></div><h2>新增悬浮快速导航栏，让长页面更容易浏览</h2><p>在页面顶部新增一条明显可见的胶囊式快速导航，可直接跳到诊断终端、指标卡、访客地图和更新历史。导航使用原生 <code>nav</code> landmark，并保留键盘焦点样式、移动端横向滚动和 reduced-motion 兼容。</p><ul><li>新增 <code>DIAGNOSTICS</code>、<code>METRICS</code>、<code>VISITOR MAP</code>、<code>UPDATES</code> 四个入口。</li><li>导航滚动时保持在页面顶部，减少长页面来回滚动成本。</li><li>为目标区块加入额外 scroll margin，避免跳转后标题被悬浮导航遮挡。</li><li><code>index.html</code> 与 <code>test.html</code> 继续保持完全相同的当前页面内容。</li></ul><div class="meta"><div>Archived file: <code>test+20260811-140315.html</code></div><div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/0c0e7c0d9a87a1be0a8d7d3af5e4d7bdae77ec91"><code>0c0e7c0d9a87</code></a></div><div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/85daf34ac6e00ce4dfe1436af25bbf86088c6c56"><code>85daf34ac6e0</code></a></div><div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/2b9baa026b41a699e3ed8f9014239aad249ec9f3"><code>2b9baa026b41</code></a></div><div>Navigation style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/900fe938913bfc2e13f39d3554c0b1aff3a63315"><code>900fe938913b</code></a></div></div><a class="download" href="test+20260811-140315.html" download>DOWNLOAD PREVIOUS HTML</a></article>
 
-    <article class="entry">
-      <div class="entry-head"><span class="time">2026-08-11 13:15:41 UTC+8</span><span class="badge">UPDATE #024</span></div>
-      <h2>重做 IP 世界访客地图，移除 Google GeoChart 依赖</h2>
-      <p>针对世界访客地图长期空白或无法显示的问题，更换整套地图渲染方式。地图轮廓现在作为仓库内的 SVG 文件随页面一起部署，不再依赖 Google Charts / gstatic；网络统计失败时地图本体仍会正常显示。</p>
-      <ul>
-        <li>新增本地 <code>assets/world.svg</code> 世界地图底图，不需要地图 CDN 或 API Key。</li>
-        <li>本次访客只显示国家/地区和粗化到 5° 网格的近似标记，不保存完整 IP 或原始坐标。</li>
-        <li>历史国家访问量改为渐进加载：读取到一个国家就立即更新一个统计气泡，不再等待全部国家请求结束才绘图。</li>
-        <li>加入 <code>RETRY MAP DATA</code>，统计接口超时或限流后可直接重试。</li>
-        <li>总访问次数、诊断终端、网络状态、COPY LOG、历史版本等已有功能继续保留。</li>
-        <li><code>index.html</code> 与 <code>test.html</code> 在同一提交中同步为完全相同的当前页面。</li>
-      </ul>
-      <div class="meta">
-        <div>Archived file: <code>test+20260811-131541.html</code></div>
-        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/e8606159904cd68c309570fa999d55bc170e2fa1"><code>e8606159904c</code></a></div>
-        <div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/09709c5c68c460b5c3a1699a55f24dc8ef8f7a57"><code>09709c5c68c4</code></a></div>
-      </div>
-      <a class="download" href="test+20260811-131541.html" download>DOWNLOAD PREVIOUS HTML</a>
-    </article>
+    <article class="entry"><div class="entry-head"><span class="time">2026-08-11 13:15:41 UTC+8</span><span class="badge">UPDATE #024</span></div><h2>重做 IP 世界访客地图，移除 Google GeoChart 依赖</h2><p>针对世界访客地图长期空白或无法显示的问题，更换整套地图渲染方式。地图轮廓现在作为仓库内的 SVG 文件随页面一起部署，不再依赖 Google Charts / gstatic；网络统计失败时地图本体仍会正常显示。</p><ul><li>新增本地 <code>assets/world.svg</code> 世界地图底图，不需要地图 CDN 或 API Key。</li><li>本次访客只显示国家/地区和粗化到 5° 网格的近似标记，不保存完整 IP 或原始坐标。</li><li>历史国家访问量改为渐进加载：读取到一个国家就立即更新一个统计气泡，不再等待全部国家请求结束才绘图。</li><li>加入 <code>RETRY MAP DATA</code>，统计接口超时或限流后可直接重试。</li><li>总访问次数、诊断终端、网络状态、COPY LOG、历史版本等已有功能继续保留。</li><li><code>index.html</code> 与 <code>test.html</code> 在同一提交中同步为完全相同的当前页面。</li></ul><div class="meta"><div>Archived file: <code>test+20260811-131541.html</code></div><div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/e8606159904cd68c309570fa999d55bc170e2fa1"><code>e8606159904c</code></a></div><div>Update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/09709c5c68c460b5c3a1699a55f24dc8ef8f7a57"><code>09709c5c68c4</code></a></div></div><a class="download" href="test+20260811-131541.html" download>DOWNLOAD PREVIOUS HTML</a></article>
 
     <section class="archive-wrap" aria-labelledby="earlierTitle">
       <h2 id="earlierTitle">Earlier updates</h2>
