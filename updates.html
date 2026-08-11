@@ -17,6 +17,27 @@
     <p class="lead">这里记录 test.html 的更新。每轮修改前都会保存上一版本，并提供对应历史 HTML。</p>
 
     <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-11 15:04:44 UTC+8</span><span class="badge">UPDATE #026</span></div>
+      <h2>首页新增明显可见的 Latest Update 状态卡</h2>
+      <p>在首屏操作区下方加入一张高对比度更新状态卡，让访客无需打开历史页就能立即看到最近一次改动、更新时间和对应的修改前归档版本。</p>
+      <ul>
+        <li>新增 <code>NEW UPDATE</code> 状态标识和 UPDATE #026 摘要。</li>
+        <li>直接展示本轮时间戳与归档文件 <code>test+20260811-150444.html</code>。</li>
+        <li>提供 <code>VIEW FULL HISTORY</code> 入口，继续保留完整更新历史。</li>
+        <li>新增独立的 <code>assets/latest-update.css</code>，桌面端三栏布局、移动端自动堆叠，不改动现有地图与诊断 JavaScript。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续保持完全相同的当前页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-150444.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/5138d0fbe2187746ea7f0020a162932796bd48f3"><code>5138d0fbe218</code></a></div>
+        <div>Style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/51d3e79b2e857f87bf73f4679b4d9173ff437ba7"><code>51d3e79b2e85</code></a></div>
+        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/bc3ebc1a5fd9925a41094c1557a2dfacf53447a0"><code>bc3ebc1a5fd9</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/0bfc721ed018eb6dd0bb3ac6cc96a1a2ee04b242"><code>0bfc721ed018</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-150444.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
       <div class="entry-head"><span class="time">2026-08-11 14:03:15 UTC+8</span><span class="badge">UPDATE #025</span></div>
       <h2>新增悬浮快速导航栏，让长页面更容易浏览</h2>
       <p>在页面顶部新增一条明显可见的胶囊式快速导航，可直接跳到诊断终端、指标卡、访客地图和更新历史。导航使用原生 <code>nav</code> landmark，并保留键盘焦点样式、移动端横向滚动和 reduced-motion 兼容。</p>
