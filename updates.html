@@ -17,6 +17,30 @@
     <p class="lead">这里记录 test.html 的更新。每轮修改前都会保存上一版本，并提供对应历史 HTML。</p>
 
     <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-12 02:00:53 UTC+8</span><span class="badge">UPDATE #037</span></div>
+      <h2>新增可交互的 TEST SESSION PROGRESS 检查清单</h2>
+      <p>把原先分散的测试步骤变成一个会自动记录进度的会话级检查清单，让访客真正跑完核心流程时能直接看到 0/4 到 4/4 的完成状态，而不是只阅读说明。</p>
+      <ul>
+        <li>新增 <code>RUN DIAGNOSTICS</code>、<code>RESIZE VIEWPORT</code>、<code>INSPECT VISITOR MAP</code> 与 <code>USE REPORT TOOL</code> 四项会话任务。</li>
+        <li>使用原生 <code>&lt;progress&gt;</code> 表示任务完成度，并同时提供 0/4 文本，避免只依赖视觉颜色表达状态。</li>
+        <li>点击 RUN TEST、窗口宽度变化至少 40px、地图进入主要视口以及使用报告按钮时会自动完成对应任务。</li>
+        <li>地图查看状态使用 <code>IntersectionObserver</code> 异步判断可见性；不支持时保留安全的焦点回退逻辑。</li>
+        <li>进度只写入当前标签页的 <code>sessionStorage</code>，不会上传，也不会跨长期浏览会话跟踪访客；可用 <code>RESET SESSION</code> 随时清零。</li>
+        <li>新增 <code>SESSION</code> 快速导航入口，并适配 DARK / LIGHT、移动端和 reduced-motion。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 继续使用完全相同的当前页面 blob。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260812-020053.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/785014bd02d83deefdd5fcc4f5928f2c5a3c3fa8"><code>785014bd02d8</code></a></div>
+        <div>Session style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/e5663cd5876a227fd67afec45e90945d9d5c11b7"><code>e5663cd5876a</code></a></div>
+        <div>Session behavior commit: <a href="https://github.com/ZhongYeMay/test_web/commit/afcaae3f7074877df01fcbf88a1be4ee782d9369"><code>afcaae3f7074</code></a></div>
+        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/87584eb90ace9817f10e5bd6d79867bd0652fe11"><code>87584eb90ace</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/6cb8cf6945efc018e1e28682d3a70084eb546bc7"><code>6cb8cf6945ef</code></a></div>
+      </div>
+      <a class="download" href="test+20260812-020053.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
       <div class="entry-head"><span class="time">2026-08-12 01:02:07 UTC+8</span><span class="badge">UPDATE #036</span></div>
       <h2>新增实时 ACCESSIBILITY PREFERENCES 信号面板</h2>
       <p>把浏览器通过用户偏好 Media Queries 暴露的无障碍与界面偏好变成常驻可见的诊断面板，让访客无需打开开发者工具即可确认当前系统偏好。</p>
