@@ -1,5 +1,7 @@
 (()=>{
   if(document.getElementById('contrastChecker')) return;
+  const latest=document.querySelector('.latest-update');
+  if(latest){const label=latest.querySelector('.latest-update__label'),title=latest.querySelector('#latestUpdateTitle'),copy=latest.querySelector('.latest-update__copy p'),time=latest.querySelector('time'),archive=latest.querySelector('.latest-update__meta span');if(label)label.textContent='LATEST CHANGE · UPDATE #041';if(title)title.textContent='新增 WCAG 颜色对比度检查器';if(copy)copy.textContent='新增交互式 COLOR CONTRAST CHECKER：可选择文字和背景颜色、交换配色，并实时查看对比度以及普通文本、大文本和 UI 图形的 WCAG 通过状态。';if(time){time.dateTime='2026-08-12T06:03:07+08:00';time.textContent='2026-08-12 06:03 UTC+8'}if(archive)archive.textContent='Archive · test+20260812-060307.html'}
   const host=document.querySelector('#accessibility')||document.querySelector('#performance')||document.querySelector('main');
   if(!host) return;
   const section=document.createElement('section');
