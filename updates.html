@@ -17,6 +17,31 @@
     <p class="lead">这里记录 test.html 的更新。每轮修改前都会保存上一版本，并提供对应历史 HTML。</p>
 
     <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-11 23:59:29 UTC+8</span><span class="badge">UPDATE #035</span></div>
+      <h2>新增本地 DIAGNOSTIC REPORT 导出工具</h2>
+      <p>把页面已有的环境、性能、地图状态与诊断日志真正变成可带走的测试结果。访客现在可以在页面内预览关键状态，然后复制整份诊断报告或下载为 TXT 文件。</p>
+      <ul>
+        <li>新增 <code>DIAGNOSTIC REPORT</code> 可见面板，实时预览网络、视口、DOM Ready、完整 Load、地图状态和测试次数。</li>
+        <li><code>REFRESH REPORT</code> 会重新读取当前页面数据；<code>COPY REPORT</code> 会复制完整文本报告。</li>
+        <li><code>DOWNLOAD .TXT</code> 使用浏览器本地 <code>Blob</code> 与 object URL 生成文件，不需要服务器、付费依赖或第三方导出服务。</li>
+        <li>报告同时汇总浏览器环境、Performance Timeline 结果、访客地图国家级状态和当前 diagnostics.log。</li>
+        <li>报告不会包含完整 IP 地址或原始经纬度；所有汇总与文件生成都只发生在当前浏览器中。</li>
+        <li>导出/复制完成后的反馈使用 <code>role="status"</code>，无需抢走键盘焦点即可向辅助技术通知结果。</li>
+        <li>快速导航新增 <code>REPORT</code> 入口，并保持现有 DARK / LIGHT、移动端与其他测试功能不变。</li>
+        <li><code>index.html</code> 与 <code>test.html</code> 保持完全相同的当前页面内容。</li>
+      </ul>
+      <div class="meta">
+        <div>Archived file: <code>test+20260811-235929.html</code></div>
+        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/fae87e8f4a8ac1944200a710439e837428046b22"><code>fae87e8f4a8a</code></a></div>
+        <div>Report style commit: <a href="https://github.com/ZhongYeMay/test_web/commit/444268e7ce022ba751bd2a540df1da49513d6714"><code>444268e7ce02</code></a></div>
+        <div>Report behavior commit: <a href="https://github.com/ZhongYeMay/test_web/commit/6aed94d439c081279f72e5c0a44e4c3358a7d0d8"><code>6aed94d439c0</code></a></div>
+        <div>Page update commit: <a href="https://github.com/ZhongYeMay/test_web/commit/875eb8b1491d2819d511fd0bb4634a41319878ea"><code>875eb8b1491d</code></a></div>
+        <div>Root sync commit: <a href="https://github.com/ZhongYeMay/test_web/commit/758aa2d255ffdc02fa1ddff05fe8a469219fb7e1"><code>758aa2d255ff</code></a></div>
+      </div>
+      <a class="download" href="test+20260811-235929.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <article class="entry">
       <div class="entry-head"><span class="time">2026-08-11 23:03:23 UTC+8</span><span class="badge">UPDATE #034</span></div>
       <h2>新增可视化 PAGE PERFORMANCE TIMELINE</h2>
       <p>把本次页面导航的真实加载过程变成常驻可见的时间线，访客现在无需打开开发者工具即可查看 DOM Ready、完整 Load、传输量与 Performance Timeline 资源数量。</p>
