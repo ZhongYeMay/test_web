@@ -61,4 +61,11 @@
     if (time) { time.dateTime = '2026-08-12T15:04:37+08:00'; time.textContent = '2026-08-12 15:04 UTC+8'; }
     if (archive) archive.textContent = 'Archive · test+20260812-150437.html';
   }
+
+  if (!document.querySelector('script[data-health-overview]')) {
+    const health = document.createElement('script');
+    health.src = 'assets/health-overview.js';
+    health.dataset.healthOverview = 'true';
+    document.body.appendChild(health);
+  }
 })();
