@@ -61,13 +61,31 @@
   main.insertBefore(section, anchor);
 
   const nav = document.querySelector('.quick-nav');
-  if (nav && !nav.querySelector('a[href="#pinnedTools"]')) {
+  let navLink = nav?.querySelector('a[href="#pinnedTools"]');
+  if (nav && !navLink) {
     const flowLink = nav.querySelector('a[href="#testFlow"]');
-    const link = document.createElement('a');
-    link.href = '#pinnedTools';
-    link.textContent = 'PINNED';
-    if (flowLink) flowLink.insertAdjacentElement('afterend', link);
-    else nav.appendChild(link);
+    navLink = document.createElement('a');
+    navLink.href = '#pinnedTools';
+    navLink.textContent = 'PINNED';
+    if (flowLink) flowLink.insertAdjacentElement('afterend', navLink);
+    else nav.appendChild(navLink);
+  }
+
+  if (nav && navLink && 'IntersectionObserver' in window) {
+    const indicator = document.getElementById('quickNavLocation');
+    const navObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (!entry?.isIntersecting) return;
+      nav.querySelectorAll('a[aria-current]').forEach((link) => link.removeAttribute('aria-current'));
+      navLink.setAttribute('aria-current', 'location');
+      if (indicator) indicator.textContent = 'VIEW · PINNED';
+      navLink.scrollIntoView({
+        behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
+    }, {root: null, rootMargin: '-18% 0px -58% 0px', threshold: [0, .15, .35, .6]});
+    navObserver.observe(section);
   }
 
   const list = document.getElementById('pinnedToolsList');
@@ -85,7 +103,6 @@
 
   const render = () => {
     const available = availableTools();
-    pinned = pinned.filter((id) => available.some(([toolId]) => toolId === id));
     list.replaceChildren();
     options.replaceChildren();
 
@@ -134,7 +151,7 @@
   });
 
   reset.addEventListener('click', () => {
-    pinned = DEFAULTS.filter((id) => document.getElementById(id));
+    pinned = [...DEFAULTS];
     save();
     render();
     status.textContent = 'Default pins restored.';
