@@ -17,6 +17,20 @@
   const hero = document.querySelector('.hero');
   if (!hero || document.getElementById('sectionFinder')) return;
 
+  const latest = hero.querySelector('.latest-update');
+  if (latest) {
+    const label = latest.querySelector('.latest-update__label');
+    const title = latest.querySelector('h2');
+    const description = latest.querySelector('.latest-update__copy p');
+    const time = latest.querySelector('time');
+    const archive = latest.querySelector('.latest-update__meta span');
+    if (label) label.textContent = 'LATEST CHANGE · UPDATE #049';
+    if (title) title.textContent = '新增 SECTION FINDER';
+    if (description) description.textContent = '新增可搜索的模块目录，可按 performance、map、accessibility 等关键词即时筛选主要测试区域，并直接跳转到目标模块。';
+    if (time) { time.dateTime = '2026-08-12T14:02:29+08:00'; time.textContent = '2026-08-12 14:02 UTC+8'; }
+    if (archive) archive.textContent = 'Archive · test+20260812-140229.html';
+  }
+
   if (!document.querySelector('link[data-section-finder-style]')) {
     const style = document.createElement('link');
     style.rel = 'stylesheet';
