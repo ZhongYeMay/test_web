@@ -75,4 +75,11 @@
     tour.dataset.guidedTour = 'true';
     document.body.appendChild(tour);
   }
+
+  if (!document.querySelector('script[data-storage-lab]')) {
+    const storageLab = document.createElement('script');
+    storageLab.src = 'assets/storage-lab.js';
+    storageLab.dataset.storageLab = 'true';
+    document.body.appendChild(storageLab);
+  }
 })();
