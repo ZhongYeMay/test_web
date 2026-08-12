@@ -89,21 +89,16 @@
     });
     refresh.addEventListener('click', scan);
     scan();
-
-    const latestLabel = document.querySelector('.latest-update__label');
-    const latestTitle = document.getElementById('latestUpdateTitle');
-    const latestText = latestTitle?.nextElementSibling;
-    const latestTime = document.querySelector('.latest-update__meta time');
-    const latestArchive = latestTime?.nextElementSibling;
-    if (latestLabel && latestTitle && latestText && latestTime && latestArchive) {
-      latestLabel.textContent = 'LATEST CHANGE · UPDATE #047';
-      latestTitle.textContent = '新增 Landmark Inspector';
-      latestText.textContent = '新增语义 Landmark 检查器，可一键高亮 header、navigation、main、命名 region 与 footer，并实时统计页面结构，帮助直观看出辅助技术可导航的主要区域。';
-      latestTime.dateTime = '2026-08-12T12:00:10+08:00';
-      latestTime.textContent = '2026-08-12 12:00 UTC+8';
-      latestArchive.textContent = 'Archive · test+20260812-120010.html';
-    }
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
   else init();
+})();
+
+(() => {
+  if (document.querySelector('script[data-site-response-pulse]')) return;
+  const script = document.createElement('script');
+  script.src = 'assets/site-response-pulse.js';
+  script.defer = true;
+  script.dataset.siteResponsePulse = 'true';
+  document.head.appendChild(script);
 })();
