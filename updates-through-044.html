@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#05070d" />
+  <meta name="color-scheme" content="dark" />
+  <title>TEST LAB · Update History</title>
+  <style>
+    :root{--bg:#05070d;--panel:rgba(255,255,255,.055);--line:rgba(255,255,255,.11);--text:#f5f7fb;--muted:#8d96a8;--accent:#7c9cff;--ok:#67e8a5}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace}.shell{width:min(920px,calc(100% - 32px));margin:auto;padding:46px 0 70px}a{color:inherit}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.logo{font-weight:800;letter-spacing:.14em}.back{display:inline-block;text-decoration:none;border:1px solid var(--line);border-radius:9px;padding:10px 13px;background:var(--panel)}h1{margin:64px 0 12px;font-family:Inter,system-ui,sans-serif;font-size:clamp(2.6rem,8vw,5.2rem);letter-spacing:-.055em}.lead,.entry p,.archive-note{color:var(--muted);line-height:1.65}.entry{margin-top:32px;border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--panel)}.entry-head{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}.time{color:var(--accent)}.badge{color:var(--ok)}.entry h2{margin:18px 0 10px;font-family:Inter,system-ui,sans-serif;font-size:1.35rem}.meta{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:grid;gap:9px;font-size:13px}.download{display:inline-block;margin-top:16px;text-decoration:none;background:var(--text);color:#080b11;border-radius:9px;padding:11px 14px;font-weight:800}.previous{margin-top:36px}.previous-head{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap}.previous h2{margin:0;font-family:Inter,system-ui,sans-serif}.archive-frame{width:100%;height:1100px;margin-top:16px;border:1px solid var(--line);border-radius:16px;background:var(--bg)}code{color:#c7d2fe;overflow-wrap:anywhere}a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}@media(max-width:720px){.archive-frame{height:760px}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="top"><div class="logo">TEST_LAB / HISTORY</div><a class="back" href="test.html">← CURRENT TEST</a></div>
+    <h1>Update History</h1>
+    <p class="lead">这里记录 test.html 的更新。每轮修改前都会保存上一版本，并提供对应历史 HTML。</p>
+
+    <article class="entry">
+      <div class="entry-head"><span class="time">2026-08-12 09:03:19 UTC+8</span><span class="badge">UPDATE #044</span></div>
+      <h2>新增 BROWSER CAPABILITY MATRIX</h2>
+      <p>主页面新增可见的浏览器能力矩阵，直接进行运行时 feature detection，显示 CSS.supports、Container Queries、IntersectionObserver、ResizeObserver、PerformanceObserver、Web Storage、Clipboard API、Web Share API、HTML dialog、matchMedia、requestIdleCallback 与 View Transitions 等能力，并支持筛选 SUPPORTED / UNSUPPORTED 项和重新检测。</p>
+      <div class="meta">
+        <span>Archived previous version: <code>test+20260812-090319.html</code></span>
+        <span>Archive commit: <code>b0cb35a58039f898c2b1b15f0b574aead8721cdf</code></span>
+        <span>Capability styles: <code>0f48c84cb9bc637a85a0ac288f93e51b6a2dc3e8</code></span>
+        <span>Capability behavior: <code>a47748295e47aa851bd2cef9957a1837f688b78d</code></span>
+        <span>Main page update: <code>89032e156af21aa1e1e233ebd2236eb2e79babc9</code></span>
+        <span>Root page sync: <code>53781a2f518611263cbae8628e3b8d62060060f9</code></span>
+      </div>
+      <a class="download" href="test+20260812-090319.html" download>DOWNLOAD PREVIOUS HTML</a>
+    </article>
+
+    <section class="previous" aria-labelledby="previousTitle">
+      <div class="previous-head"><div><span class="time">ARCHIVE</span><h2 id="previousTitle">UPDATES #001–#043</h2></div><a class="back" href="updates-through-043.html">OPEN FULL PREVIOUS HISTORY →</a></div>
+      <p class="archive-note">此前所有记录保持原样，并嵌入下方以便继续浏览和下载历史版本。</p>
+      <iframe class="archive-frame" src="updates-through-043.html" title="Updates 001 through 043"></iframe>
+    </section>
+  </div>
+</body>
+</html>
