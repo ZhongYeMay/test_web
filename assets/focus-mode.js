@@ -68,4 +68,11 @@
     health.dataset.healthOverview = 'true';
     document.body.appendChild(health);
   }
+
+  if (!document.querySelector('script[data-guided-tour]')) {
+    const tour = document.createElement('script');
+    tour.src = 'assets/guided-tour.js';
+    tour.dataset.guidedTour = 'true';
+    document.body.appendChild(tour);
+  }
 })();
