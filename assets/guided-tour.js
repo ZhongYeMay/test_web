@@ -63,14 +63,15 @@
   };
 
   const open = () => {
+    clearHighlight();
     index = 0;
     render();
     if (typeof dialog.showModal === 'function') dialog.showModal();
     else dialog.setAttribute('open', '');
   };
 
-  const close = () => {
-    clearHighlight();
+  const close = (preserveHighlight = false) => {
+    if (!preserveHighlight) clearHighlight();
     if (typeof dialog.close === 'function' && dialog.open) dialog.close();
     else dialog.removeAttribute('open');
     trigger.focus();
@@ -87,12 +88,13 @@
     clearHighlight();
     highlighted = target;
     target.classList.add('tour-target-highlight');
-    close();
+    close(true);
     target.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
+    window.setTimeout(clearHighlight, 1800);
   };
 
   trigger.addEventListener('click', open);
-  dialog.querySelector('.guided-tour__close')?.addEventListener('click', close);
+  dialog.querySelector('.guided-tour__close')?.addEventListener('click', () => close());
   prev.addEventListener('click', () => { if (index > 0) { index -= 1; render(); } });
   next.addEventListener('click', () => {
     if (index === steps.length - 1) { close(); return; }
