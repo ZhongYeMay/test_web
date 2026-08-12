@@ -7,7 +7,7 @@
   <meta name="color-scheme" content="dark" />
   <title>TEST LAB · Update History</title>
   <style>
-    :root{--bg:#05070d;--panel:rgba(255,255,255,.055);--line:rgba(255,255,255,.11);--text:#f5f7fb;--muted:#8d96a8;--accent:#7c9cff;--ok:#67e8a5}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace}.shell{width:min(920px,calc(100% - 32px));margin:auto;padding:46px 0 70px}a{color:inherit}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.logo{font-weight:800;letter-spacing:.14em}.back{display:inline-block;text-decoration:none;border:1px solid var(--line);border-radius:9px;padding:10px 13px;background:var(--panel)}h1{margin:64px 0 12px;font-family:Inter,system-ui,sans-serif;font-size:clamp(2.6rem,8vw,5.2rem);letter-spacing:-.055em}.lead,.entry p,.entry li,.archive-note{color:var(--muted);line-height:1.65}.entry{margin-top:32px;border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--panel)}.entry-head{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}.time{color:var(--accent)}.badge{color:var(--ok)}.entry h2{margin:18px 0 10px;font-family:Inter,system-ui,sans-serif;font-size:1.35rem}.meta{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:grid;gap:9px;font-size:13px}.download{display:inline-block;margin-top:16px;text-decoration:none;background:var(--text);color:#080b11;border-radius:9px;padding:11px 14px;font-weight:800}code{color:#c7d2fe;overflow-wrap:anywhere}.previous{margin-top:36px}.previous-head{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap}.previous h2{margin:0;font-family:Inter,system-ui,sans-serif}.archive-frame{width:100%;height:1100px;margin-top:16px;border:1px solid var(--line);border-radius:16px;background:var(--bg)}a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}@media(max-width:720px){.archive-frame{height:760px}}
+    :root{--bg:#05070d;--panel:rgba(255,255,255,.055);--line:rgba(255,255,255,.11);--text:#f5f7fb;--muted:#8d96a8;--accent:#7c9cff;--ok:#67e8a5}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace}.shell{width:min(920px,calc(100% - 32px));margin:auto;padding:46px 0 70px}a{color:inherit}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.logo{font-weight:800;letter-spacing:.14em}.back{display:inline-block;text-decoration:none;border:1px solid var(--line);border-radius:9px;padding:10px 13px;background:var(--panel)}h1{margin:64px 0 12px;font-family:Inter,system-ui,sans-serif;font-size:clamp(2.6rem,8vw,5.2rem);letter-spacing:-.055em}.lead,.entry p,.archive-note{color:var(--muted);line-height:1.65}.entry{margin-top:32px;border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--panel)}.entry-head{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}.time{color:var(--accent)}.badge{color:var(--ok)}.entry h2{margin:18px 0 10px;font-family:Inter,system-ui,sans-serif;font-size:1.35rem}.meta{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:grid;gap:9px;font-size:13px}.download{display:inline-block;margin-top:16px;text-decoration:none;background:var(--text);color:#080b11;border-radius:9px;padding:11px 14px;font-weight:800}.previous{margin-top:36px}.previous-head{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap}.previous h2{margin:0;font-family:Inter,system-ui,sans-serif}.archive-frame{width:100%;height:1100px;margin-top:16px;border:1px solid var(--line);border-radius:16px;background:var(--bg)}code{color:#c7d2fe;overflow-wrap:anywhere}a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}@media(max-width:720px){.archive-frame{height:760px}}
   </style>
 </head>
 <body>
@@ -17,27 +17,24 @@
     <p class="lead">这里记录 test.html 的更新。每轮修改前都会保存上一版本，并提供对应历史 HTML。</p>
 
     <article class="entry">
-      <div class="entry-head"><span class="time">2026-08-12 07:03:19 UTC+8</span><span class="badge">UPDATE #042</span></div>
-      <h2>新增 Responsive Preview Lab</h2>
-      <p>新增一个明显可见的响应式组件测试实验室。访客无需反复调整整个浏览器窗口，即可在不同容器宽度下观察同一组件如何重新排版。</p>
-      <ul>
-        <li>提供 360px、640px、960px 和 AUTO 四种预设宽度，并在桌面浏览器中支持直接拖动测试容器右侧边缘。</li>
-        <li>实时显示当前容器宽度，并把布局状态分成 narrow、medium 和 wide 三档。</li>
-        <li>示例组件使用 CSS Container Queries，根据自身容器宽度而不是 viewport 宽度切换布局。</li>
-        <li>使用 <code>ResizeObserver</code> 更新宽度读数，并为不支持它的环境保留窗口 resize 回退。</li>
-        <li>没有增加第三方脚本、付费依赖或外部运行时资源；原有诊断、地图、主题、密度、快捷键、性能和无障碍功能均保留。</li>
-      </ul>
+      <div class="entry-head"><span class="time">2026-08-12 08:02:00 UTC+8</span><span class="badge">UPDATE #043</span></div>
+      <h2>新增 TEXT SCALE / REFLOW TEST</h2>
+      <p>主页面新增可见的文字缩放与回流测试面板，可在 100%、125%、150%、200% 间切换，并实时检测页面级横向溢出，帮助检查放大文字后的可读性、按钮完整性与布局韧性。选择仅保存在浏览器本地。</p>
       <div class="meta">
-        <div>Archived file: <code>test+20260812-070319.html</code></div>
-        <div>Archive commit: <a href="https://github.com/ZhongYeMay/test_web/commit/1f64384521855d858bf762e108592ce055ff7f73"><code>1f6438452185</code></a></div>
-        <div>Feature commit: <a href="https://github.com/ZhongYeMay/test_web/commit/5f995ba86ab9cff74ab28e0a5e7f761cf8955b03"><code>5f995ba86ab9</code></a></div>
+        <span>Archived previous version: <code>test+20260812-080200.html</code></span>
+        <span>Archive commit: <code>835aae3d12553765dc630eafa8672b1411e41a9d</code></span>
+        <span>Text scale CSS: <code>cf63f3d975a85aa2a4a41ec4fb88d966d25f01a0</code></span>
+        <span>Text scale behavior: <code>b3ed234bc06337281460837a3814b66ed6a56e4f</code></span>
+        <span>Main page update: <code>f0e524e10ff9dda24252985a0ad9b5b7b4e01a30</code></span>
+        <span>Root page sync: <code>bb893a06fb843f3d803134f25fad067201d6bcd8</code></span>
       </div>
-      <a class="download" href="test+20260812-070319.html" download>DOWNLOAD PREVIOUS HTML</a>
+      <a class="download" href="test+20260812-080200.html" download>DOWNLOAD PREVIOUS HTML</a>
     </article>
 
     <section class="previous" aria-labelledby="previousTitle">
-      <div class="previous-head"><div><h2 id="previousTitle">Earlier updates · #041 and older</h2><p class="archive-note">The prior history page is preserved byte-for-byte below, including every earlier entry and download link.</p></div><a class="back" href="updates-through-041.html">OPEN FULL PRIOR HISTORY ↗</a></div>
-      <iframe class="archive-frame" src="updates-through-041.html" title="Update history through update 041" loading="lazy"></iframe>
+      <div class="previous-head"><div><span class="time">ARCHIVE</span><h2 id="previousTitle">UPDATES #001–#042</h2></div><a class="back" href="updates-through-042.html">OPEN FULL PREVIOUS HISTORY →</a></div>
+      <p class="archive-note">此前所有记录保持原样，并嵌入下方以便继续浏览和下载历史版本。</p>
+      <iframe class="archive-frame" src="updates-through-042.html" title="Updates 001 through 042"></iframe>
     </section>
   </div>
 </body>
