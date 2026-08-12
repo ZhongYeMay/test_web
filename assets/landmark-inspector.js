@@ -1,5 +1,14 @@
 (() => {
+  const ensureStyles = () => {
+    if (document.querySelector('link[href="assets/landmark-inspector.css"]')) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'assets/landmark-inspector.css';
+    document.head.appendChild(link);
+  };
+
   const init = () => {
+    ensureStyles();
     const main = document.getElementById('mainContent');
     if (!main || document.getElementById('landmarks')) return;
 
