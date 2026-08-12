@@ -89,11 +89,11 @@
     const description = latest.querySelector('.latest-update__copy p');
     const time = latest.querySelector('time');
     const archive = latest.querySelector('.latest-update__meta span');
-    if (label) label.textContent = 'LATEST CHANGE · UPDATE #056';
-    if (title) title.textContent = '新增页面当前位置导航';
-    if (description) description.textContent = '新增 TEST LAB → TEST WORKSPACE → 当前测试区域 → UPDATE HISTORY 的可见路径导航，并与 Quick Nav 的当前区域状态同步，长页面中更容易确认自己正在查看哪个模块。';
-    if (time) { time.dateTime = '2026-08-12T21:04:57+08:00'; time.textContent = '2026-08-12 21:04 UTC+8'; }
-    if (archive) archive.textContent = 'Archive · test+20260812-210457.html';
+    if (label) label.textContent = 'LATEST CHANGE · UPDATE #057';
+    if (title) title.textContent = '新增本地测试笔记工具';
+    if (description) description.textContent = '新增 TEST NOTES 本地测试草稿区，可自动保存测试记录、统计字符与行数、导出 TXT 并一键清空；笔记仅保存在当前浏览器，不上传到服务器。';
+    if (time) { time.dateTime = '2026-08-12T22:00:31+08:00'; time.textContent = '2026-08-12 22:00 UTC+8'; }
+    if (archive) archive.textContent = 'Archive · test+20260812-220031.html';
   }
 
   if (!document.querySelector('script[data-health-overview]')) {
@@ -115,5 +115,12 @@
     storageLab.src = 'assets/storage-lab.js';
     storageLab.dataset.storageLab = 'true';
     document.body.appendChild(storageLab);
+  }
+
+  if (!document.querySelector('script[data-session-notes]')) {
+    const notes = document.createElement('script');
+    notes.src = 'assets/session-notes.js';
+    notes.dataset.sessionNotes = 'true';
+    document.body.appendChild(notes);
   }
 })();
