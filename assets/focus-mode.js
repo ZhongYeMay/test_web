@@ -11,6 +11,40 @@
     document.head.appendChild(style);
   }
 
+  if (!document.querySelector('link[data-context-trail-style]')) {
+    const style = document.createElement('link');
+    style.rel = 'stylesheet';
+    style.href = 'assets/breadcrumb-trail.css';
+    style.dataset.contextTrailStyle = 'true';
+    document.head.appendChild(style);
+  }
+
+  const trail = document.createElement('nav');
+  trail.className = 'context-trail';
+  trail.id = 'contextTrail';
+  trail.setAttribute('aria-label', '当前位置');
+  trail.innerHTML = `
+    <ol class="context-trail__list">
+      <li><span class="context-trail__pulse" aria-hidden="true"></span><a href="#mainContent">TEST LAB</a></li>
+      <li><a href="#testFlow">TEST WORKSPACE</a></li>
+      <li><span id="contextTrailCurrent" aria-current="location">FLOW</span></li>
+      <li><a href="updates.html">UPDATE HISTORY</a></li>
+    </ol>`;
+  hero.insertAdjacentElement('afterend', trail);
+
+  const currentTrail = trail.querySelector('#contextTrailCurrent');
+  const quickNav = document.querySelector('.quick-nav');
+  const syncTrail = () => {
+    const current = quickNav?.querySelector('a[aria-current="location"], a[aria-current="page"]');
+    if (currentTrail) currentTrail.textContent = current ? current.textContent.trim() : 'FLOW';
+  };
+  if (quickNav) {
+    const observer = new MutationObserver(syncTrail);
+    observer.observe(quickNav, {subtree:true, attributes:true, attributeFilter:['aria-current']});
+  }
+  window.addEventListener('hashchange', syncTrail, {passive:true});
+  syncTrail();
+
   const panel = document.createElement('section');
   panel.className = 'focus-mode-panel';
   panel.id = 'focusModePanel';
@@ -28,7 +62,7 @@
 
   const finder = document.getElementById('sectionFinder');
   if (finder) finder.insertAdjacentElement('afterend', panel);
-  else hero.insertAdjacentElement('afterend', panel);
+  else trail.insertAdjacentElement('afterend', panel);
 
   const buttons = [...panel.querySelectorAll('[data-focus-option]')];
   const state = panel.querySelector('#focusModeState');
@@ -55,11 +89,11 @@
     const description = latest.querySelector('.latest-update__copy p');
     const time = latest.querySelector('time');
     const archive = latest.querySelector('.latest-update__meta span');
-    if (label) label.textContent = 'LATEST CHANGE · UPDATE #050';
-    if (title) title.textContent = '新增 FOCUS MODE';
-    if (description) description.textContent = '新增 FULL VIEW / FOCUS VIEW 工作区切换。Focus 模式会暂时隐藏可选深度测试面板，保留核心流程、诊断、指标和访客地图，减少长页面滚动。';
-    if (time) { time.dateTime = '2026-08-12T15:04:37+08:00'; time.textContent = '2026-08-12 15:04 UTC+8'; }
-    if (archive) archive.textContent = 'Archive · test+20260812-150437.html';
+    if (label) label.textContent = 'LATEST CHANGE · UPDATE #056';
+    if (title) title.textContent = '新增页面当前位置导航';
+    if (description) description.textContent = '新增 TEST LAB → TEST WORKSPACE → 当前测试区域 → UPDATE HISTORY 的可见路径导航，并与 Quick Nav 的当前区域状态同步，长页面中更容易确认自己正在查看哪个模块。';
+    if (time) { time.dateTime = '2026-08-12T21:04:57+08:00'; time.textContent = '2026-08-12 21:04 UTC+8'; }
+    if (archive) archive.textContent = 'Archive · test+20260812-210457.html';
   }
 
   if (!document.querySelector('script[data-health-overview]')) {
