@@ -142,4 +142,18 @@
 
   render();
   window.setTimeout(render, 1200);
+
+  const latest = document.querySelector('.hero .latest-update');
+  if (latest) {
+    const label = latest.querySelector('.latest-update__label');
+    const title = latest.querySelector('h2');
+    const description = latest.querySelector('.latest-update__copy p');
+    const time = latest.querySelector('time');
+    const archive = latest.querySelector('.latest-update__meta span');
+    if (label) label.textContent = 'LATEST CHANGE · UPDATE #058';
+    if (title) title.textContent = '新增可自定义 Pinned Tools 常用工具区';
+    if (description) description.textContent = '可把最常用的诊断、Web Vitals、访客地图等模块固定到页面顶部，减少长页面查找；选择仅保存在当前浏览器。';
+    if (time) { time.dateTime = '2026-08-12T23:02:16+08:00'; time.textContent = '2026-08-12 23:02 UTC+8'; }
+    if (archive) archive.textContent = 'Archive · test+20260812-230216.html';
+  }
 })();
