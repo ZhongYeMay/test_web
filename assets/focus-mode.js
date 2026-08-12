@@ -1,0 +1,64 @@
+(() => {
+  const STORAGE_KEY = 'test_web_focus_mode';
+  const hero = document.querySelector('.hero');
+  if (!hero || document.getElementById('focusModePanel')) return;
+
+  if (!document.querySelector('link[data-focus-mode-style]')) {
+    const style = document.createElement('link');
+    style.rel = 'stylesheet';
+    style.href = 'assets/focus-mode.css';
+    style.dataset.focusModeStyle = 'true';
+    document.head.appendChild(style);
+  }
+
+  const panel = document.createElement('section');
+  panel.className = 'focus-mode-panel';
+  panel.id = 'focusModePanel';
+  panel.setAttribute('aria-labelledby', 'focusModeTitle');
+  panel.innerHTML = `
+    <div class="focus-mode-panel__head">
+      <div><span class="focus-mode-panel__kicker">// WORKSPACE FILTER</span><h2 id="focusModeTitle">FOCUS MODE</h2></div>
+      <div class="focus-mode-panel__controls" role="group" aria-label="页面工作区模式">
+        <button type="button" data-focus-option="full" aria-pressed="true">FULL VIEW</button>
+        <button type="button" data-focus-option="focus" aria-pressed="false">FOCUS VIEW</button>
+      </div>
+    </div>
+    <p>需要快速走核心测试流程时，FOCUS VIEW 会暂时收起可选的深度检查面板，只保留测试流程、会话进度、诊断终端、实时指标与访客地图。所有功能都可通过 FULL VIEW 立即恢复。</p>
+    <div class="focus-mode-panel__status" role="status" aria-live="polite"><strong id="focusModeState">FULL VIEW</strong><span id="focusModeNote">all test modules visible</span></div>`;
+
+  const finder = document.getElementById('sectionFinder');
+  if (finder) finder.insertAdjacentElement('afterend', panel);
+  else hero.insertAdjacentElement('afterend', panel);
+
+  const buttons = [...panel.querySelectorAll('[data-focus-option]')];
+  const state = panel.querySelector('#focusModeState');
+  const note = panel.querySelector('#focusModeNote');
+
+  const apply = mode => {
+    const value = mode === 'focus' ? 'focus' : 'full';
+    document.body.dataset.focusMode = value;
+    buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.focusOption === value)));
+    state.textContent = value === 'focus' ? 'FOCUS VIEW' : 'FULL VIEW';
+    note.textContent = value === 'focus' ? 'optional deep-dive panels hidden · core workflow stays visible' : 'all test modules visible';
+    try { localStorage.setItem(STORAGE_KEY, value); } catch (_) {}
+  };
+
+  buttons.forEach(button => button.addEventListener('click', () => apply(button.dataset.focusOption)));
+  let initial = 'full';
+  try { initial = localStorage.getItem(STORAGE_KEY) || 'full'; } catch (_) {}
+  apply(initial);
+
+  const latest = hero.querySelector('.latest-update');
+  if (latest) {
+    const label = latest.querySelector('.latest-update__label');
+    const title = latest.querySelector('h2');
+    const description = latest.querySelector('.latest-update__copy p');
+    const time = latest.querySelector('time');
+    const archive = latest.querySelector('.latest-update__meta span');
+    if (label) label.textContent = 'LATEST CHANGE · UPDATE #050';
+    if (title) title.textContent = '新增 FOCUS MODE';
+    if (description) description.textContent = '新增 FULL VIEW / FOCUS VIEW 工作区切换。Focus 模式会暂时隐藏可选深度测试面板，保留核心流程、诊断、指标和访客地图，减少长页面滚动。';
+    if (time) { time.dateTime = '2026-08-12T15:04:37+08:00'; time.textContent = '2026-08-12 15:04 UTC+8'; }
+    if (archive) archive.textContent = 'Archive · test+20260812-150437.html';
+  }
+})();
