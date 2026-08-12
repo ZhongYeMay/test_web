@@ -90,4 +90,12 @@
     input.focus();
   });
   render();
+
+  if (!document.querySelector('script[data-focus-mode-loader]')) {
+    const script = document.createElement('script');
+    script.src = 'assets/focus-mode.js';
+    script.defer = true;
+    script.dataset.focusModeLoader = 'true';
+    document.body.appendChild(script);
+  }
 })();
