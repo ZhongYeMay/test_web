@@ -1,0 +1,26 @@
+.print-snapshot-header{display:none}
+@media print{
+  @page{margin:12mm}
+  :root{color-scheme:light}
+  *{animation:none!important;transition:none!important;text-shadow:none!important}
+  html,body{background:#fff!important;color:#111!important}
+  body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif!important}
+  .shell{max-width:none!important;margin:0!important;padding:0!important}
+  .topbar,.quick-nav,.hero,.action-dock,.shortcut-trigger,.shortcut-dialog,.scroll-progress,.guided-tour-launcher,.guided-tour-dialog,.focus-mode-control,.section-finder,.site-health-overview,.landmark-inspector,.site-response-pulse{display:none!important}
+  main{display:block!important}
+  main>section:not(#report):not(#diagnostics):not(#metrics):not(#visitorMap){display:none!important}
+  .print-snapshot-header{display:block!important;margin:0 0 18px;padding:0 0 12px;border-bottom:2px solid #111}
+  .print-snapshot-header strong{display:block;font-size:20pt;letter-spacing:.04em}
+  .print-snapshot-header span{display:block;margin-top:5px;font-size:9pt;color:#444}
+  #report,#diagnostics,#metrics,#visitorMap{display:block!important;background:#fff!important;color:#111!important;border:1px solid #bbb!important;box-shadow:none!important;break-inside:avoid;margin:0 0 16px!important}
+  #metrics{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+  #metrics .card{background:#fff!important;color:#111!important;border:1px solid #ccc!important;box-shadow:none!important;break-inside:avoid}
+  #report *,#diagnostics *,#metrics *,#visitorMap *{color:#111!important}
+  #diagnostics .terminal-body{background:#fff!important}
+  #visitorMap .map-stage{background:#f5f5f5!important;border:1px solid #ccc!important;break-inside:avoid}
+  #visitorMap .map-base{filter:grayscale(1) contrast(.9)!important}
+  .report-panel__actions,.map-actions,.terminal-copy,button{display:none!important}
+  a{color:#111!important;text-decoration:none!important}
+  footer{display:flex!important;margin-top:10px!important;padding-top:8px!important;border-top:1px solid #bbb!important;color:#444!important;font-size:8pt!important}
+  footer a{color:#111!important}
+}
