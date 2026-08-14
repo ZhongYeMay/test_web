@@ -2,3 +2,20 @@
 .continue-panel .head{margin:0 0 14px;align-items:center}.continue-clear{border:1px solid var(--line);border-radius:999px;background:var(--panel2);padding:8px 12px;font-size:12px;font-weight:800;cursor:pointer}.continue-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.continue-card{min-width:0;padding:0;border:1px solid var(--line);border-radius:15px;overflow:hidden;background:rgba(255,255,255,.025);color:var(--text);text-align:left;cursor:pointer}.continue-card:hover{background:rgba(255,255,255,.055)}.continue-card:focus-visible{outline:2px solid var(--blue);outline-offset:3px}.continue-art{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,#333b61,#171923)}.continue-art img{width:100%;height:100%;object-fit:cover}.continue-icon{position:absolute;inset:0;display:grid;place-items:center;font-size:42px}.continue-progress,.watch-progress{position:absolute;z-index:4;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.22);overflow:hidden}.continue-progress i,.watch-progress i{display:block;height:100%;width:0;background:var(--accent)}.continue-copy{display:grid;gap:5px;padding:11px 12px}.continue-copy strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}.continue-copy small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-size:11px}.continue-empty{margin:0;padding:24px 16px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);text-align:center;font-size:13px}.thumb .watch-progress{height:3px}.watch-progress i{background:linear-gradient(90deg,var(--accent),var(--blue))}
 @media(max-width:900px){.continue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.continue-panel{padding:16px 12px}.continue-grid{grid-template-columns:1fr}.continue-card{display:grid;grid-template-columns:140px minmax(0,1fr)}.continue-art{aspect-ratio:16/9}.continue-copy{align-content:center}}
+
+/* UPDATE #069 — responsive theater player */
+.player{width:min(1280px,calc(100vw - 32px));max-height:calc(100dvh - 28px);border-radius:20px;background:#08080a;box-shadow:0 36px 120px rgba(0,0,0,.72)}
+.player::backdrop{background:rgba(0,0,0,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.playerbar{position:sticky;top:0;z-index:3;min-height:56px;padding:10px 16px;background:rgba(11,11,12,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.playerbar strong{font-size:13px;letter-spacing:.01em}.player .close{min-width:40px;min-height:40px}
+.player video{width:100%;aspect-ratio:16/9;max-height:calc(100dvh - 176px);object-fit:contain;background:#000;box-shadow:inset 0 1px rgba(255,255,255,.04)}
+.playermeta{padding:16px 20px calc(19px + env(safe-area-inset-bottom,0px));background:linear-gradient(180deg,#101012,#0b0b0c)}
+.playermeta h2{font-size:clamp(18px,2vw,24px);line-height:1.25}.playermeta p{line-height:1.55}
+@media(max-width:620px){
+  .player{width:100vw;height:100dvh;max-height:100dvh;margin:0;border:0;border-radius:0}
+  .playerbar{padding-top:calc(8px + env(safe-area-inset-top,0px));min-height:calc(54px + env(safe-area-inset-top,0px))}
+  .player video{aspect-ratio:auto;height:min(62dvh,calc(100dvh - 188px));max-height:none;object-fit:contain}
+  .playermeta{padding:14px 16px calc(18px + env(safe-area-inset-bottom,0px));overflow:auto}
+  .playermeta h2{font-size:18px}
+}
+@media(prefers-reduced-transparency:reduce){.player::backdrop{backdrop-filter:none;-webkit-backdrop-filter:none}.playerbar{backdrop-filter:none;-webkit-backdrop-filter:none}}
