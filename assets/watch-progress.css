@@ -19,3 +19,15 @@
   .playermeta h2{font-size:18px}
 }
 @media(prefers-reduced-transparency:reduce){.player::backdrop{backdrop-filter:none;-webkit-backdrop-filter:none}.playerbar{backdrop-filter:none;-webkit-backdrop-filter:none}}
+
+/* UPDATE #071 — consistent keyboard focus visibility */
+:where(a,button,input,.thumb,[role="button"],[tabindex]):focus-visible{
+  outline:3px solid var(--text);
+  outline-offset:3px;
+  box-shadow:0 0 0 6px var(--blue);
+}
+.thumb:focus-visible:after{font-size:28px;background:rgba(0,0,0,.22)}
+.search input:focus-visible{border-color:var(--blue)}
+@media(forced-colors:active){
+  :where(a,button,input,.thumb,[role="button"],[tabindex]):focus-visible{outline:3px solid CanvasText;outline-offset:3px;box-shadow:none}
+}
