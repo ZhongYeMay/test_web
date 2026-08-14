@@ -241,3 +241,179 @@
   addEventListener('resize', updateActiveFromScroll);
   updateActiveFromScroll();
 })();
+
+(() => {
+  const form = document.getElementById('searchForm');
+  const searchInput = document.getElementById('searchInput');
+  const recommend = document.getElementById('recommend');
+  if (!form || !searchInput || !recommend || typeof apply !== 'function') return;
+
+  form.classList.add('search-combobox');
+  searchInput.setAttribute('role', 'combobox');
+  searchInput.setAttribute('aria-autocomplete', 'list');
+  searchInput.setAttribute('aria-controls', 'searchSuggestions');
+  searchInput.setAttribute('aria-expanded', 'false');
+  searchInput.setAttribute('autocomplete', 'off');
+
+  const list = document.createElement('div');
+  list.id = 'searchSuggestions';
+  list.className = 'search-suggestions';
+  list.setAttribute('role', 'listbox');
+  list.hidden = true;
+
+  const live = document.createElement('span');
+  live.className = 'search-sr';
+  live.setAttribute('aria-live', 'polite');
+  form.append(list, live);
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .search-combobox{position:relative}
+    .search-suggestions{position:absolute;z-index:95;top:calc(100% + 8px);left:0;right:0;max-height:min(420px,60vh);overflow:auto;padding:7px;border:1px solid var(--line);border-radius:16px;background:rgba(24,24,27,.98);box-shadow:0 22px 60px rgba(0,0,0,.42);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+    .search-suggestions[hidden]{display:none}.search-option{width:100%;min-height:48px;border:0;border-radius:11px;padding:9px 11px;display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;align-items:center;background:transparent;color:var(--text);text-align:left;cursor:pointer}.search-option:hover,.search-option.active,.search-option[aria-selected="true"]{background:var(--panel2)}
+    .search-option-icon{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:rgba(124,140,255,.12);font-size:15px}.search-option-copy{min-width:0;display:grid;gap:2px}.search-option-copy strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}.search-option-copy small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-size:11px}.search-option-kind{padding:4px 7px;border-radius:999px;background:rgba(255,255,255,.07);color:var(--muted);font-size:10px;font-weight:900}.search-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .light .search-suggestions{background:rgba(255,255,255,.98);box-shadow:0 22px 50px rgba(0,0,0,.16)}
+    @media(max-width:620px){.search-suggestions{position:fixed;top:66px;left:10px;right:10px;max-height:55dvh}.search-option{min-height:52px}}
+    @media(prefers-reduced-transparency:reduce){.search-suggestions{backdrop-filter:none;-webkit-backdrop-filter:none}}
+  `;
+  document.head.appendChild(style);
+
+  let suggestions = [];
+  let activeIndex = -1;
+
+  function currentItems() {
+    return Array.isArray(items) ? items.filter(Boolean) : [];
+  }
+
+  function buildSuggestions(query) {
+    const q = query.trim().toLowerCase();
+    const rows = [];
+    const seen = new Set();
+    const source = currentItems();
+
+    function add(label, kind, meta, icon, score) {
+      const key = `${kind}:${label.toLowerCase()}`;
+      if (!label || seen.has(key)) return;
+      seen.add(key);
+      rows.push({ label, kind, meta, icon, score });
+    }
+
+    source.forEach((item, index) => {
+      const title = String(item.title || '');
+      const channel = String(item.channel || '');
+      const category = String(item.category || '');
+      const tags = Array.isArray(item.tags) ? item.tags.map(String) : [];
+      const haystack = [title, channel, category, ...tags].join(' ').toLowerCase();
+      if (q && !haystack.includes(q)) return;
+      const lowerTitle = title.toLowerCase();
+      const score = q ? (lowerTitle.startsWith(q) ? 0 : lowerTitle.includes(q) ? 1 : 2) : index + 3;
+      add(title, item.remote ? '视频' : 'DEMO', [channel, category].filter(Boolean).join(' · '), item.remote ? '▶' : '◇', score);
+      if (category && (!q || category.toLowerCase().includes(q))) add(category, '分类', `${source.filter(v => v.category === category).length} 个视频`, '▦', score + 0.5);
+      tags.forEach(tag => {
+        if (!q || tag.toLowerCase().includes(q)) add(tag, '标签', '按标签筛选', '#', score + 1);
+      });
+    });
+
+    return rows.sort((a, b) => a.score - b.score || a.label.localeCompare(b.label, 'zh-CN')).slice(0, 7);
+  }
+
+  function closeSuggestions() {
+    list.hidden = true;
+    activeIndex = -1;
+    searchInput.setAttribute('aria-expanded', 'false');
+    searchInput.removeAttribute('aria-activedescendant');
+  }
+
+  function setActive(index) {
+    const options = [...list.querySelectorAll('.search-option')];
+    if (!options.length) return;
+    activeIndex = (index + options.length) % options.length;
+    options.forEach((option, i) => {
+      const active = i === activeIndex;
+      option.classList.toggle('active', active);
+      option.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    const selected = options[activeIndex];
+    searchInput.setAttribute('aria-activedescendant', selected.id);
+    selected.scrollIntoView({ block: 'nearest' });
+  }
+
+  function choose(row) {
+    searchInput.value = row.label;
+    closeSuggestions();
+    apply();
+    recommend.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  }
+
+  function renderSuggestions() {
+    suggestions = buildSuggestions(searchInput.value);
+    activeIndex = -1;
+    list.innerHTML = '';
+    if (!suggestions.length) {
+      closeSuggestions();
+      live.textContent = searchInput.value.trim() ? '没有搜索建议' : '';
+      return;
+    }
+
+    suggestions.forEach((row, index) => {
+      const option = document.createElement('button');
+      option.type = 'button';
+      option.id = `searchSuggestion${index}`;
+      option.className = 'search-option';
+      option.setAttribute('role', 'option');
+      option.setAttribute('aria-selected', 'false');
+
+      const icon = document.createElement('span');
+      icon.className = 'search-option-icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = row.icon;
+
+      const copy = document.createElement('span');
+      copy.className = 'search-option-copy';
+      const strong = document.createElement('strong');
+      strong.textContent = row.label;
+      const small = document.createElement('small');
+      small.textContent = row.meta || (demoMode ? '演示建议' : 'NOVA VIDEOS');
+      copy.append(strong, small);
+
+      const kind = document.createElement('span');
+      kind.className = 'search-option-kind';
+      kind.textContent = row.kind;
+      option.append(icon, copy, kind);
+      option.addEventListener('mousedown', event => event.preventDefault());
+      option.addEventListener('click', () => choose(row));
+      list.appendChild(option);
+    });
+
+    list.hidden = false;
+    searchInput.setAttribute('aria-expanded', 'true');
+    live.textContent = `${suggestions.length} 条搜索建议`;
+  }
+
+  searchInput.addEventListener('focus', renderSuggestions);
+  searchInput.addEventListener('input', renderSuggestions);
+  searchInput.addEventListener('keydown', event => {
+    if (event.key === 'ArrowDown') {
+      if (list.hidden) renderSuggestions();
+      if (!list.hidden) { event.preventDefault(); setActive(activeIndex + 1); }
+    } else if (event.key === 'ArrowUp' && !list.hidden) {
+      event.preventDefault();
+      setActive(activeIndex - 1);
+    } else if (event.key === 'Enter' && !list.hidden && activeIndex >= 0) {
+      event.preventDefault();
+      choose(suggestions[activeIndex]);
+    } else if (event.key === 'Escape' && !list.hidden) {
+      event.preventDefault();
+      closeSuggestions();
+    }
+  });
+
+  form.addEventListener('submit', closeSuggestions);
+  document.addEventListener('pointerdown', event => {
+    if (!form.contains(event.target)) closeSuggestions();
+  });
+
+  new MutationObserver(() => {
+    if (document.activeElement === searchInput) renderSuggestions();
+  }).observe(document.getElementById('videoGrid'), { childList: true });
+})();
