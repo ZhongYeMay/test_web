@@ -173,3 +173,71 @@
   new MutationObserver(refreshUI).observe(gridEl, { childList: true });
   refreshUI();
 })();
+
+(() => {
+  const style = document.createElement('style');
+  style.textContent = `
+    .mobile-nav{display:none}
+    @media(max-width:620px){
+      .main{padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}
+      .toast{bottom:calc(82px + env(safe-area-inset-bottom,0px))}
+      .mobile-nav{position:fixed;z-index:70;left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:6px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(24,24,27,.94);box-shadow:0 18px 44px rgba(0,0,0,.4);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+      .mobile-nav a{min-width:0;min-height:48px;border-radius:13px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#b7b7c1;font-size:10px;font-weight:800;line-height:1.1;text-align:center;touch-action:manipulation}
+      .mobile-nav a .mobile-nav-icon{font-size:18px;line-height:1}
+      .mobile-nav a.active,.mobile-nav a[aria-current="location"]{background:var(--panel2);color:var(--text)}
+      .light .mobile-nav{border-color:rgba(0,0,0,.1);background:rgba(255,255,255,.94);box-shadow:0 18px 44px rgba(0,0,0,.15)}
+    }
+  `;
+  document.head.appendChild(style);
+
+  const nav = document.createElement('nav');
+  nav.className = 'mobile-nav';
+  nav.setAttribute('aria-label', '移动端主导航');
+  nav.innerHTML = `
+    <a href="#main" data-mobile-section="main" class="active" aria-current="location"><span class="mobile-nav-icon" aria-hidden="true">⌂</span><span>首页</span></a>
+    <a href="#recommend" data-mobile-section="recommend"><span class="mobile-nav-icon" aria-hidden="true">▶</span><span>推荐</span></a>
+    <a href="#continueWatching" data-mobile-section="continueWatching"><span class="mobile-nav-icon" aria-hidden="true">↻</span><span>继续</span></a>
+    <a href="#shorts" data-mobile-section="shorts"><span class="mobile-nav-icon" aria-hidden="true">▥</span><span>Shorts</span></a>
+    <a href="https://github.com/ZhongYeMay/novavideos" target="_blank" rel="noopener"><span class="mobile-nav-icon" aria-hidden="true">＋</span><span>视频源</span></a>
+  `;
+  document.body.appendChild(nav);
+
+  const internalLinks = [...nav.querySelectorAll('[data-mobile-section]')];
+  const sectionIds = ['main', 'continueWatching', 'recommend', 'shorts'];
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  function setActive(id) {
+    internalLinks.forEach(link => {
+      const active = link.dataset.mobileSection === id;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  internalLinks.forEach(link => link.addEventListener('click', event => {
+    const target = document.getElementById(link.dataset.mobileSection);
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    setActive(link.dataset.mobileSection);
+  }));
+
+  let ticking = false;
+  function updateActiveFromScroll() {
+    ticking = false;
+    const marker = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
+    let current = 'main';
+    sections.forEach(section => {
+      if (section.offsetTop <= marker) current = section.id;
+    });
+    setActive(current);
+  }
+  addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(updateActiveFromScroll);
+  }, { passive: true });
+  addEventListener('resize', updateActiveFromScroll);
+  updateActiveFromScroll();
+})();
