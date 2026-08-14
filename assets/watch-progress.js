@@ -1,4 +1,47 @@
 (() => {
+  const sourcePanel = document.getElementById('sourcePanel');
+  const gridEl = document.getElementById('videoGrid');
+  const resultEl = document.getElementById('resultText');
+  const emptyEl = document.getElementById('empty');
+  if (!sourcePanel || !gridEl) return;
+
+  gridEl.setAttribute('aria-live', 'polite');
+
+  function skeletonMarkup() {
+    return Array.from({ length: 4 }, () => `
+      <article class="skeleton-card" aria-hidden="true">
+        <div class="skeleton-thumb"></div>
+        <div class="skeleton-meta">
+          <div class="skeleton-avatar"></div>
+          <div class="skeleton-copy">
+            <div class="skeleton-line title"></div>
+            <div class="skeleton-line meta"></div>
+          </div>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  function showSkeleton() {
+    if (sourcePanel.dataset.state !== 'loading') return;
+    try { items = []; } catch {}
+    gridEl.setAttribute('aria-busy', 'true');
+    gridEl.innerHTML = skeletonMarkup();
+    if (emptyEl) emptyEl.style.display = 'none';
+    if (resultEl) resultEl.textContent = '正在连接 GitHub 视频源…';
+  }
+
+  if (sourcePanel.dataset.state === 'loading') showSkeleton();
+  else gridEl.setAttribute('aria-busy', 'false');
+
+  new MutationObserver(() => {
+    const loading = sourcePanel.dataset.state === 'loading';
+    gridEl.setAttribute('aria-busy', loading ? 'true' : 'false');
+    if (loading && !gridEl.querySelector('.skeleton-card')) showSkeleton();
+  }).observe(sourcePanel, { attributes: true, attributeFilter: ['data-state'] });
+})();
+
+(() => {
   const STORAGE_KEY = 'nova-video-progress-v1';
   const MIN_SECONDS = 5;
   const COMPLETE_RATIO = 0.95;
