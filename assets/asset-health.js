@@ -1,7 +1,30 @@
 (() => {
   'use strict';
 
-  const panel = document.getElementById('assetHealth');
+  const mount = () => {
+    let panel = document.getElementById('assetHealth');
+    if (!panel) {
+      panel = document.createElement('section');
+      panel.className = 'asset-health';
+      panel.id = 'assetHealth';
+      panel.setAttribute('aria-labelledby', 'assetHealthTitle');
+      panel.innerHTML = '<div class="asset-health__head"><div><span class="asset-health__kicker">// DEPLOYMENT RESOURCE CHECK</span><h2 id="assetHealthTitle">ASSET HEALTH CHECK</h2></div><p class="asset-health__hint">检查当前页面实际引用的同源 CSS、JavaScript 与图片资源，快速发现 GitHub Pages 部署后出现的 404、加载失败或异常慢资源。重新检查只发送轻量 HEAD 请求，不上传页面数据。</p></div><div class="asset-health__stats"><div class="asset-health__stat"><span>LOCAL ASSETS</span><strong id="assetHealthTotal">0</strong></div><div class="asset-health__stat"><span>RESPONDING</span><strong id="assetHealthOk">0</strong></div><div class="asset-health__stat"><span>FAILED</span><strong id="assetHealthFailed">0</strong></div><div class="asset-health__stat"><span>PAGE TRANSFER</span><strong id="assetHealthTransfer">—</strong></div></div><ul class="asset-health__list" id="assetHealthList" aria-label="本地资源检查结果"></ul><div class="asset-health__footer"><span class="asset-health__status" id="assetHealthStatus" role="status" aria-live="polite">Waiting for page assets…</span><button type="button" class="asset-health__refresh" id="assetHealthRefresh">RECHECK ASSETS</button></div>';
+      const anchor = document.getElementById('testFlow');
+      if (anchor) anchor.insertAdjacentElement('afterend', panel);
+      else document.getElementById('mainContent')?.prepend(panel);
+    }
+
+    const nav = document.querySelector('.quick-nav');
+    if (nav && !nav.querySelector('a[href="#assetHealth"]')) {
+      const link = document.createElement('a');
+      link.href = '#assetHealth';
+      link.textContent = 'ASSETS';
+      nav.querySelector('a[href="updates.html"]')?.insertAdjacentElement('beforebegin', link);
+    }
+    return panel;
+  };
+
+  const panel = mount();
   if (!panel) return;
 
   const totalEl = document.getElementById('assetHealthTotal');
