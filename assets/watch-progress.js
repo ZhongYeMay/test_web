@@ -7,12 +7,19 @@
     document.body.appendChild(script);
   };
 
-  const communityStyle = document.createElement('link');
-  communityStyle.rel = 'stylesheet';
-  communityStyle.href = 'assets/community-tags.css';
-  document.head.appendChild(communityStyle);
+  const loadStyle = href => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
+  };
+
+  loadStyle('assets/community-tags.css');
+  loadStyle('assets/release-playcount.css');
 
   loadScript('assets/watch-progress-core-072.js', () => {
-    loadScript('assets/community-tags.js');
+    loadScript('assets/community-tags.js', () => {
+      loadScript('assets/release-playcount.js');
+    });
   });
 })();
