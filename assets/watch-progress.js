@@ -19,7 +19,7 @@
 
   loadScript('assets/watch-progress-core-072.js', () => {
     loadScript('assets/community-tags.js', () => {
-      loadScript('assets/release-playcount.js', () => {
+      loadScript('assets/release-playcount.js?v=076', () => {
         loadScript('assets/contribute.js');
       });
     });

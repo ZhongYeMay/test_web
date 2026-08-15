@@ -69,7 +69,8 @@
         label.className = 'card-local-plays';
         info.appendChild(label);
       }
-      label.textContent = `本机播放 ${countFor(id)} 次`;
+      const text = `本机播放 ${countFor(id)} 次`;
+      if (label.textContent !== text) label.textContent = text;
     });
   }
 
@@ -84,7 +85,9 @@
     stored[id] = formatted;
     writeObject(DURATION_KEY, stored);
     if (item) item.duration = formatted;
-    document.querySelectorAll(`.card[data-id="${CSS.escape(String(id))}"] .dur`).forEach(node => { node.textContent = formatted; });
+    document.querySelectorAll(`.card[data-id="${CSS.escape(String(id))}"] .dur`).forEach(node => {
+      if (node.textContent !== formatted) node.textContent = formatted;
+    });
   }
 
   function applyStoredDurations() {
@@ -104,7 +107,7 @@
         badge.className = 'dur';
         card.querySelector('.thumb')?.appendChild(badge);
       }
-      badge.textContent = value;
+      if (badge.textContent !== value) badge.textContent = value;
     });
   }
 
