@@ -16,10 +16,11 @@
 
   loadStyle('assets/community-tags.css');
   loadStyle('assets/release-playcount.css');
+  loadStyle('assets/cloud-engagement.css?v=077');
 
   loadScript('assets/watch-progress-core-072.js', () => {
     loadScript('assets/community-tags.js', () => {
-      loadScript('assets/release-playcount.js?v=076', () => {
+      loadScript('assets/cloud-engagement.js?v=077', () => {
         loadScript('assets/contribute.js');
       });
     });
