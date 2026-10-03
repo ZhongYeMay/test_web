@@ -13,7 +13,7 @@
     }
   });
   // Extension styles load asynchronously; keep the visual layer last in the cascade.
-  const theme = document.querySelector('link[href="assets/nova-fusion.css"]');
+  const theme = document.querySelector('link[href^="assets/nova-fusion.css"]');
   const observer = new MutationObserver(() => {
     if (document.head.lastElementChild !== theme) document.head.appendChild(theme);
   });

@@ -8,7 +8,7 @@
 <title>NOVA · Video</title>
 <link rel="stylesheet" href="assets/video-base.css">
 <link rel="stylesheet" href="assets/watch-progress.css">
-<link rel="stylesheet" href="assets/nova-fusion.css">
+<link rel="stylesheet" href="assets/nova-fusion.css?v=glass-2">
 </head>
 <body>
 <a class="skip" href="#main">跳到视频内容</a>
@@ -35,5 +35,5 @@ const dialog=document.getElementById('playerDialog'),player=document.getElementB
 chips.forEach(c=>c.onclick=()=>{chips.forEach(x=>x.classList.remove('active'));c.classList.add('active');filter=c.dataset.filter;apply()});document.getElementById('searchForm').onsubmit=e=>{e.preventDefault();apply();document.getElementById('recommend').scrollIntoView({behavior:'smooth'})};input.oninput=apply;document.getElementById('exploreBtn').onclick=()=>document.getElementById('recommend').scrollIntoView({behavior:'smooth'});document.getElementById('refreshSource').onclick=loadSource;document.getElementById('shuffleBtn').onclick=()=>{[...grid.children].sort(()=>Math.random()-.5).forEach(c=>grid.appendChild(c));toastMsg('已重新排列推荐')};document.querySelectorAll('.short').forEach(x=>x.onclick=()=>toastMsg('Shorts 将在后续版本接入同一 GitHub 视频源'));let light=true;document.getElementById('themeBtn').onclick=()=>{light=!light;document.documentElement.classList.toggle('light',light);toastMsg(light?'已切换浅色模式':'已切换深色模式')};render(demos);loadSource();
 </script>
 <script src="assets/watch-progress.js?v=076"></script>
-<script src="assets/nova-fusion.js"></script>
+<script src="assets/nova-fusion.js?v=glass-2"></script>
 </body></html>
