@@ -119,3 +119,11 @@ body:before{
 .menu-button .ui-icon,.icon .ui-icon{width:19px;height:19px}
 .scene .ui-icon{width:52px;height:52px;stroke-width:1.35}
 @media(prefers-reduced-transparency:reduce){.topbar,.side,.chips,.source,.continue-panel,.shorts,.player,.playerbar,.playermeta,.mobile-nav{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+
+/* Final neutral accents */
+.title-dot{color:var(--text)!important}
+.window-bottom{color:#777!important}
+.window-bottom div{background:linear-gradient(90deg,#777 38%,#e5e5e5 38%)!important}
+.window-bottom small{color:#777!important}
+.live-dot,.head h2:before{background:var(--accent)!important}
+.float-tag,.tag-top,.tag-bottom{color:var(--text)!important}
